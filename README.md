@@ -17,8 +17,8 @@ var iconfont = require('gulp-iconfont');
 gulp.task('Iconfont', function(){
   gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
-      fontName: 'myfont',
-      appendCodepoints: true
+      fontName: 'myfont', // required
+      appendCodepoints: true // recommanded option
      }))
     .pipe(gulp.dest('www/fonts/'));
 });
@@ -60,4 +60,5 @@ The ascent formula is : ascent = fontHeight - descent.
 Type: `Boolean`
 Default value: `false`
 
-Allow to append codepoints to icon files in order to always keep the same codepoints.
+Allow to append codepoints to icon files in order to always keep the same
+ codepoints.
