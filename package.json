@@ -2,7 +2,7 @@
   "name": "gulp-iconfont",
   "version": "0.0.1",
   "description": "Create icon fonts from several SVG icons",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha tests/*.mocha.js"
   },
