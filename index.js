@@ -13,9 +13,8 @@ function group() {
   // Mapping given streams
   var streams = [].slice.call(arguments,0).map(function(stream) {
     // Listening to streams datas
-    var f;
     stream.on('data', function(file) {
-      pass.write(file); f=file;
+      pass.write(file);
     });
     // Listening to streams end
     stream.once('end', function() {
@@ -55,9 +54,8 @@ function throughs() {
   // Mapping given streams
   var streams = [].slice.call(arguments,0).map(function(stream) {
     // Listening to streams datas
-    var f;
     stream.on('data', function(file) {
-      trans.push(file); f=file;
+      trans.push(file);
     });
     return stream;
   });
