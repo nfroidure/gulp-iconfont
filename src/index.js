@@ -107,10 +107,6 @@ function gulpFontIcon(options) {
   // Generation EOT and WOFF fonts
     .pipe(throughs(ttf2eot(), ttf2woff()));
 
-  svgOut.myName="svgOut";
-  ttfOut.myName="ttfOut";
-  main.myName="main";
-
   return duplexer(svg, group(svgOut, main));
 
 }
