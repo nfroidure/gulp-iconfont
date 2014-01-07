@@ -20,13 +20,13 @@ describe('gulp-iconfont', function() {
 
   describe('in stream mode', function() {
 
-    it.only('should work with iconsfont', function(done) {
+    it('should work with iconsfont', function(done) {
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
         .pipe(iconfont({
           fontName: 'iconsfont'
         }))
         .pipe(gulp.dest(__dirname+'/results/'))
-        .on('end', function() {
+        .pipe(es.wait(function() {
           assert.equal(
             fs.readFileSync(__dirname+'/results/iconsfont.svg', 'utf8'),
             fs.readFileSync(__dirname+'/expected/iconsfont.svg', 'utf8')
@@ -49,7 +49,7 @@ describe('gulp-iconfont', function() {
           fs.unlinkSync(__dirname + '/results/iconsfont.woff');
           fs.rmdirSync(__dirname + '/results/');
           done();
-        });
+        }));
     });
 
   });
