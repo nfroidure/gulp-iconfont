@@ -96,7 +96,6 @@ function explode() {
 
 function gulpFontIcon(options) {
   var svgOut = new Stream.PassThrough({objectMode: true});
-  var ttfOut = new Stream.PassThrough({objectMode: true});
   var consumer = new Stream.PassThrough({objectMode: true});
 
   // Generating SVG font and saving her

@@ -1,5 +1,5 @@
 # gulp-iconfont [![NPM version](https://badge.fury.io/js/gulp-iconfont.png)](https://npmjs.org/package/gulp-iconfont) [![Build status](https://api.travis-ci.org/nfroidure/gulp-iconfont.png)](https://travis-ci.org/nfroidure/gulp-iconfont)
-> Create a SVG/TTF/EOT/WOFF fonts from several SVG icons with [Gulp](http://gulpjs.com/).
+> Create a SVG/TTF/EOT/WOFF font from several SVG icons with [Gulp](http://gulpjs.com/).
 
 You can test this library with the
  [frontend generator](http://nfroidure.github.io/svgiconfont/) before using
