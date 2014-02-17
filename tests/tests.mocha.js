@@ -21,34 +21,39 @@ describe('gulp-iconfont', function() {
   describe('in stream mode', function() {
 
     it('should work with iconsfont', function(done) {
+      this.timeout(5000);
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
         .pipe(iconfont({
           fontName: 'iconsfont'
         }))
         .pipe(gulp.dest(__dirname+'/results/'))
         .pipe(es.wait(function() {
-          assert.equal(
-            fs.readFileSync(__dirname+'/results/iconsfont.svg', 'utf8'),
-            fs.readFileSync(__dirname+'/expected/iconsfont.svg', 'utf8')
-          );
-          assert.equal(
-            fs.readFileSync(__dirname+'/results/iconsfont.ttf', 'utf8'),
-            fs.readFileSync(__dirname+'/expected/iconsfont.ttf', 'utf8')
-          );
-          assert.equal(
-            fs.readFileSync(__dirname+'/results/iconsfont.eot', 'utf8'),
-            fs.readFileSync(__dirname+'/expected/iconsfont.eot', 'utf8')
-          );
-          assert.equal(
-            fs.readFileSync(__dirname+'/results/iconsfont.woff', 'utf8'),
-            fs.readFileSync(__dirname+'/expected/iconsfont.woff', 'utf8')
-          );
-          fs.unlinkSync(__dirname + '/results/iconsfont.svg');
-          fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
-          fs.unlinkSync(__dirname + '/results/iconsfont.eot');
-          fs.unlinkSync(__dirname + '/results/iconsfont.woff');
-          fs.rmdirSync(__dirname + '/results/');
-          done();
+          // Trick to wait for datas beeing written to disk...
+          // https://github.com/wearefractal/vinyl-fs/issues/7
+          setTimeout(function() {
+            assert.equal(
+              fs.readFileSync(__dirname+'/results/iconsfont.svg', 'utf8'),
+              fs.readFileSync(__dirname+'/expected/iconsfont.svg', 'utf8')
+            );
+            assert.equal(
+              fs.readFileSync(__dirname+'/results/iconsfont.ttf', 'utf8'),
+              fs.readFileSync(__dirname+'/expected/iconsfont.ttf', 'utf8')
+            );
+            assert.equal(
+              fs.readFileSync(__dirname+'/results/iconsfont.eot', 'utf8'),
+              fs.readFileSync(__dirname+'/expected/iconsfont.eot', 'utf8')
+            );
+            assert.equal(
+              fs.readFileSync(__dirname+'/results/iconsfont.woff', 'utf8'),
+              fs.readFileSync(__dirname+'/expected/iconsfont.woff', 'utf8')
+            );
+            fs.unlinkSync(__dirname + '/results/iconsfont.svg');
+            fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
+            fs.unlinkSync(__dirname + '/results/iconsfont.eot');
+            fs.unlinkSync(__dirname + '/results/iconsfont.woff');
+            fs.rmdirSync(__dirname + '/results/');
+            done();
+          }, 3000);
         }));
     });
 
