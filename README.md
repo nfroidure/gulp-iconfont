@@ -29,7 +29,13 @@ gulp.task('Iconfont', function(){
 ```
 
 `gulp-iconfont` bundles several plugins to bring a simpler API
- (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`).
+ (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`)
+ for more flexibility, feel free to use them separately.
+
+To use this font in your CSS, you could add a mixin like in this
+ [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
+ You may also want to generate CSS automatically with
+ [`gulp-iconfont-scss`](https://github.com/backflip/gulp-iconfont-css).
 
 ## API
 
@@ -66,3 +72,4 @@ Default value: `false`
 
 Allow to append codepoints to icon files in order to always keep the same
  codepoints.
+
