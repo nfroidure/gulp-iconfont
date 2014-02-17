@@ -1,10 +1,34 @@
 {
   "name": "gulp-iconfont",
-  "version": "0.0.4",
   "description": "Create icon fonts from several SVG icons",
+  "version": "0.0.4",
+  "homepage": "https://github.com/nfroidure/gulp-iconfont",
+  "author": {
+    "name": "Nicolas Froidure",
+    "url": "http://www.insertafter.com/blog.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nfroidure/gulp-iconfont.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nfroidure/gulp-iconfont/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/nfroidure/gulp-iconfont/blob/master/LICENSE"
+    }
+  ],
+  "main": "src/index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
   "main": "src/index.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha tests/*.mocha.js"
+    "test": "node_modules/mocha/bin/mocha tests/*.mocha.js",
+    "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- tests/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "cover": "./node_modules/istanbul/lib/cli.js cover --report html ./node_modules/mocha/bin/_mocha -- tests/*.mocha.js -R spec -t 5000"
   },
   "keywords": [
     "gulpplugin",
@@ -12,8 +36,6 @@
     "icon",
     "font"
   ],
-  "author": "Nicolas Froidure",
-  "license": "MIT",
   "dependencies": {
     "gulp-util": "~2.2.0",
     "gulp-svg2ttf": "0.0.6",
@@ -23,8 +45,11 @@
     "plexer": "0.0.1"
   },
   "devDependencies": {
-    "event-stream": "~3.0.20",
-    "mocha": "~1.16.2",
-    "gulp": "~3.2.4"
+    "gulp": "~3.2.4",
+    "mocha": "~1.17.1",
+    "event-stream": "~3.1.0",
+    "mocha-lcov-reporter": "0.0.1",
+    "coveralls": "~2.7.1",
+    "istanbul": "~0.2.4"
   }
 }
