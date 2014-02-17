@@ -1,6 +1,6 @@
 var gutil = require('gulp-util')
   , Stream = require('stream')
-  , duplexer = require('duplexer')
+  , duplexer = require('plexer')
   , svgicons2svgfont = require('gulp-svgicons2svgfont')
   , svg2ttf = require('gulp-svg2ttf')
   , ttf2eot = require('gulp-ttf2eot')
@@ -17,7 +17,7 @@ function gulpFontIcon(options) {
   // Generating WOFF font
     .pipe(ttf2woff({clone: true}));
 
-  return duplexer(inStream, outStream);
+  return duplexer({objectMode: true}, inStream, outStream);
 
 }
 

@@ -20,7 +20,7 @@
     "gulp-ttf2eot": "0.0.6",
     "gulp-ttf2woff": "0.0.4",
     "gulp-svgicons2svgfont": "0.0.5",
-    "duplexer": "~0.1.1"
+    "plexer": "0.0.1"
   },
   "devDependencies": {
     "event-stream": "~3.0.20",
