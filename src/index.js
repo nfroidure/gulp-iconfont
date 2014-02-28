@@ -17,8 +17,14 @@ function gulpFontIcon(options) {
   // Generating WOFF font
     .pipe(ttf2woff({clone: true}));
 
-  return duplexer({objectMode: true}, inStream, outStream);
+  var duplex = duplexer({objectMode: true}, inStream, outStream);
 
+  // Re-emit codepoint mapping event
+  inStream.on('codepoints', function(codepoints) {
+    duplex.emit('codepoints', codepoints);
+  });
+
+  return duplex;
 }
 
 module.exports = gulpFontIcon;
