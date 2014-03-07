@@ -1,7 +1,7 @@
 {
   "name": "gulp-iconfont",
   "description": "Create icon fonts from several SVG icons",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "homepage": "https://github.com/nfroidure/gulp-iconfont",
   "author": {
     "name": "Nicolas Froidure",
@@ -41,7 +41,7 @@
     "gulp-svg2ttf": "0.0.6",
     "gulp-ttf2eot": "0.0.6",
     "gulp-ttf2woff": "0.0.4",
-    "gulp-svgicons2svgfont": "0.0.5",
+    "gulp-svgicons2svgfont": "0.0.6",
     "plexer": "0.0.1"
   },
   "devDependencies": {

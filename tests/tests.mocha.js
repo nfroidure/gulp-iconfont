@@ -59,23 +59,20 @@ describe('gulp-iconfont', function() {
 
     it('should emit an event with the codepoint mapping', function(done) {
       this.timeout(5000);
+      var codepoints;
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
         .pipe(iconfont({
           fontName: 'iconsfont'
-        })).on('codepoints', function(codepoints) {
-          fs.mkdirSync(__dirname+'/results/');
-          fs.writeFileSync(__dirname+'/results/codepoints.json', JSON.stringify(codepoints));
+        })).on('codepoints', function(cpts) {
+          codepoints = cpts;
         })
         .pipe(gulp.dest(__dirname+'/results/'))
         .pipe(es.wait(function() {
           // Trick to wait for datas beeing written to disk...
           // https://github.com/wearefractal/vinyl-fs/issues/7
           setTimeout(function() {
-            assert.equal(
-              fs.readFileSync(__dirname+'/results/codepoints.json', 'utf8'),
-              fs.readFileSync(__dirname+'/expected/codepoints.json', 'utf8')
-            );
-            fs.unlinkSync(__dirname + '/results/codepoints.json');
+            assert.deepEqual(codepoints, JSON.parse(fs.readFileSync(
+                __dirname + '/expected/codepoints.json', 'utf8')));
             fs.unlinkSync(__dirname + '/results/iconsfont.svg');
             fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
             fs.unlinkSync(__dirname + '/results/iconsfont.eot');
