@@ -7,6 +7,10 @@ You can test this library with the
  [frontend generator](http://nfroidure.github.io/svgiconfont/) before using
  her.
 
+## Stats
+[![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
+[![NPM](https://nodei.co/npm-dl/gulp-iconfont.png)](https://nodei.co/npm/gulp-iconfont/)
+
 ## Usage
 
 First, install `gulp-iconfont` as a development dependency:
