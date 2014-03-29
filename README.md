@@ -81,6 +81,10 @@ Allow to append codepoints to icon files in order to always keep the same
 
 ## Preparing SVG's
 
+### Inkscape
+Degroup every shapes (Ctrl+Shift+G), convert to pathes (Ctrl+Maj+C)  and merge
+ them (Ctrl++). Then save you SVG, prefer 'simple SVG' file type.
+
 ### Illustrator
 
 Save your file as SVG with the following settings:
