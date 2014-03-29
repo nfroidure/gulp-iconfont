@@ -8,6 +8,7 @@ You can test this library with the
  her.
 
 ## Stats
+
 [![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
 [![NPM](https://nodei.co/npm-dl/gulp-iconfont.png)](https://nodei.co/npm/gulp-iconfont/)
 
@@ -42,6 +43,9 @@ To use this font in your CSS, you could add a mixin like in this
  [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
  You may also want to generate CSS automatically with
  [`gulp-iconfont-scss`](https://github.com/backflip/gulp-iconfont-css).
+
+You may also want to hint your fonts, you can use Gulp spawn and ttfautohint for
+that matter.
 
 ## API
 
