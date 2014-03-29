@@ -1,5 +1,4 @@
 var gutil = require('gulp-util')
-  , Stream = require('stream')
   , duplexer = require('plexer')
   , svgicons2svgfont = require('gulp-svgicons2svgfont')
   , svg2ttf = require('gulp-svg2ttf')
