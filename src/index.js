@@ -20,7 +20,7 @@ function gulpFontIcon(options) {
 
   // Re-emit codepoint mapping event
   inStream.on('codepoints', function(codepoints) {
-    duplex.emit('codepoints', codepoints);
+    duplex.emit('codepoints', codepoints, options);
   });
 
   return duplex;

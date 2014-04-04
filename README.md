@@ -29,8 +29,12 @@ gulp.task('Iconfont', function(){
   gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
       fontName: 'myfont', // required
-      appendCodepoints: true // recommanded option
+      appendCodepoints: true // recommended option
      }))
+      .on('codepoints', function(codepoints, options) {
+        // CSS templating, e.g.
+        console.log(codepoints, options);
+      })
     .pipe(gulp.dest('www/fonts/'));
 });
 ```
