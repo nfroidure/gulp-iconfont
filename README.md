@@ -106,6 +106,10 @@ Allow to append codepoints to icon files in order to always keep the same
 
 ## Preparing SVG's
 
+Beware that your SVG icons must have a high enough height. 500 is a minimum. If
+ you do not want to resize them, you can try to combine the `fontHeight` and
+ the `normalize` option to get them in a correct size.
+
 ### Inkscape
 Degroup every shapes (Ctrl+Shift+G), convert to pathes (Ctrl+Maj+C)  and merge
  them (Ctrl++). Then save you SVG, prefer 'simple SVG' file type.
