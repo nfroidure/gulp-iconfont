@@ -45,11 +45,28 @@ gulp.task('Iconfont', function(){
 
 To use this font in your CSS, you could add a mixin like in this
  [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
- You may also want to generate CSS automatically with
+ You can also generate your CSS automatically with
  [`gulp-iconfont-scss`](https://github.com/backflip/gulp-iconfont-css).
 
-You may also want to hint your fonts, you can use Gulp spawn and ttfautohint for
-that matter.
+You may also want to hint your TTF fonts, you can use `gulp-spawn`,
+ `gulp-filter` and `ttfautohint` for that matter. First install `ttfautohint`
+ (use at least the 0.93 version), then, in your gulpfile:
+```js
+var ttfFilter = filter('*.ttf');
+
+  gulp.src(['assets/icons/*.svg'])
+  .pipe(iconfont(/* ... */))
+  .pipe(ttfFilter)
+  .pipe(spawn({
+    cmd: '/bin/sh',
+    args: [
+      '-c',
+      'cat | ttfautohint /dev/stdin /dev/stdout | cat'
+    ]
+  }))
+  .pipe(ttfFilter.restore())
+  .pipe(gulp.dest('www/fonts/'))
+```
 
 ## API
 
