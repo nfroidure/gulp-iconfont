@@ -131,3 +131,18 @@ Save your file as SVG with the following settings:
 Leave the rest unchecked.
 
 More in-depth information: [http://www.adobe.com/inspire/2013/09/exporting-svg-illustrator.html](http://www.adobe.com/inspire/2013/09/exporting-svg-illustrator.html)
+
+### Sketch
+
+[Sketch](http://bohemiancoding.com/sketch/) is a relatively new drawing tool on Mac. With help of [Sketch Tools](http://bohemiancoding.com/sketch/tool/) and [gulp-sketch](https://github.com/cognitom/gulp-sketch), you can directly create fonts from your Sketch file. No need to export intermediate SVGs.
+
+![Directly create fonts from your Sketch file](https://github.com/cognitom/symbols-for-sketch/raw/master/images/webfonts.png)
+
+Here is a sample repo "[Symbols for Sketch](https://github.com/cognitom/symbols-for-sketch)".
+
+0. [Download the zipped repo](https://github.com/cognitom/symbols-for-sketch/archive/master.zip) and extract it.
+0. Go to the directory. `$ cd path/to/dir`
+0. Install some tools. `$ npm install`
+0. Create fonts and CSS `$ gulp symbols`
+
+
