@@ -3,6 +3,7 @@ var fs = require('fs')
   , gutil = require('gulp-util')
   , es = require('event-stream')
   , iconfont = require('../src/index')
+  , util = require('util')
   , assert = require('assert')
 ;
 
@@ -10,8 +11,9 @@ var fs = require('fs')
 // See: https://github.com/fontello/svg2ttf/blob/c6de4bd45d50afc6217e150dbc69f1cd3280f8fe/lib/sfnt.js#L19
 Date = (function(d) {
   function Date() {
-    d.call(this, 3600);
+    return new d(3600);
   }
+  util.inherits(Date, d);
   Date.now = d.now;
   return Date;
 })(Date);

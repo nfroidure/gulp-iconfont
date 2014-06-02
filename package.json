@@ -1,7 +1,7 @@
 {
   "name": "gulp-iconfont",
   "description": "Create icon fonts from several SVG icons",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "homepage": "https://github.com/nfroidure/gulp-iconfont",
   "author": {
     "name": "Nicolas Froidure",
@@ -37,19 +37,19 @@
     "font"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.14",
-    "gulp-svg2ttf": "0.0.6",
-    "gulp-ttf2eot": "0.0.7",
-    "gulp-ttf2woff": "0.0.5",
-    "gulp-svgicons2svgfont": "0.0.11",
-    "plexer": "0.0.2"
+    "gulp-util": "~2.2.15",
+    "gulp-svg2ttf": "0.0.7",
+    "gulp-ttf2eot": "0.0.8",
+    "gulp-ttf2woff": "0.0.6",
+    "gulp-svgicons2svgfont": "0.0.12",
+    "plexer": "0.0.3"
   },
   "devDependencies": {
-    "gulp": "~3.6.2",
-    "mocha": "~1.18.2",
-    "event-stream": "~3.1.2",
+    "gulp": "~3.7.0",
+    "mocha": "~1.20.0",
+    "event-stream": "~3.1.5",
     "mocha-lcov-reporter": "0.0.1",
     "coveralls": "~2.10.0",
-    "istanbul": "~0.2.7"
+    "istanbul": "~0.2.10"
   }
 }
