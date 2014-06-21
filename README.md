@@ -62,6 +62,18 @@ var ttfFilter = filter('*.ttf');
   .pipe(gulp.dest('www/fonts/'))
 ```
 
+## Issues
+
+Add issues to the right repos:
+* the plugin doesn't work at all, submit your issue in this repo.
+* every fonts doens't display as expected: submit the issue to the
+ [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont) repository.
+* only some fonts are damaged? Please look at the font format the targeted
+ browser actually use and then, submit you issue to one of those projects:
+ [svg2ttf](https://github.com/fontello/svg2ttf),
+ [ttf2eot](https://github.com/fontello/ttf2eot),
+ [ttf2woff](https://github.com/fontello/ttf2woff).
+
 ## API
 
 ### iconfont(options)
