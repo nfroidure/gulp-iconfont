@@ -4,13 +4,7 @@
 [![NPM version](https://badge.fury.io/js/gulp-iconfont.png)](https://npmjs.org/package/gulp-iconfont) [![Build status](https://secure.travis-ci.org/nfroidure/gulp-iconfont.png)](https://travis-ci.org/nfroidure/gulp-iconfont) [![Dependency Status](https://david-dm.org/nfroidure/gulp-iconfont.png)](https://david-dm.org/nfroidure/gulp-iconfont) [![devDependency Status](https://david-dm.org/nfroidure/gulp-iconfont/dev-status.png)](https://david-dm.org/nfroidure/gulp-iconfont#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-iconfont/badge.png?branch=master)](https://coveralls.io/r/nfroidure/gulp-iconfont?branch=master) [![Code Climate](https://codeclimate.com/github/nfroidure/gulp-iconfont.png)](https://codeclimate.com/github/nfroidure/gulp-iconfont)
 
 You can test this library with the
- [frontend generator](http://nfroidure.github.io/svgiconfont/) before using
- her.
-
-## Stats
-
-[![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
-[![NPM](https://nodei.co/npm-dl/gulp-iconfont.png)](https://nodei.co/npm/gulp-iconfont/)
+ [frontend generator](http://nfroidure.github.io/svgiconfont/).
 
 ## Usage
 
@@ -72,37 +66,19 @@ var ttfFilter = filter('*.ttf');
 
 ### iconfont(options)
 
-#### options.fontName
-Type: `String`
-Default value: `'iconfont'`
+#### options.*
+The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
+ are available:
+* options.fontName
+* options.fixedWidth
+* options.centerHorizontally
+* options.normalize
+* options.fontHeight
+* options.descent
+* options.log
 
-A string value that is used to name your font-family (required).
-
-#### options.fixedWidth
-Type: `Boolean`
-Default value: `false`
-
-Creates a monospace font of the width of the largest input icon.
-
-#### options.fontHeight
-Type: `Number`
-
-The ouputted font height (defaults to the height of the highest input icon).
-
-#### options.descent
-Type: `Number`
-Default value: `0`
-
-The font descent. It is usefull to fix the font baseline yourself.
-
-The ascent formula is : ascent = fontHeight - descent.
-
-#### options.appendCodepoints
-Type: `Boolean`
-Default value: `false`
-
-Allow to append codepoints to icon files in order to always keep the same
- codepoints.
+So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
+* options.appendCodepoints
 
 ## Preparing SVG's
 
@@ -145,4 +121,10 @@ Here is a sample repo "[Symbols for Sketch](https://github.com/cognitom/symbols-
 0. Install some tools. `$ npm install`
 0. Create fonts and CSS `$ gulp symbols`
 
+## Contributing
+Feel free to push your code if you agree with publishing under the MIT license.
+
+## Stats
+[![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
+[![NPM](https://nodei.co/npm-dl/gulp-iconfont.png)](https://nodei.co/npm/gulp-iconfont/)
 
