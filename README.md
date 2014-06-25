@@ -24,7 +24,7 @@ gulp.task('Iconfont', function(){
     .pipe(iconfont({
       fontName: 'myfont', // required
       appendCodepoints: true // recommended option
-     }))
+    }))
       .on('codepoints', function(codepoints, options) {
         // CSS templating, e.g.
         console.log(codepoints, options);
