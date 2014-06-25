@@ -37,10 +37,38 @@ gulp.task('Iconfont', function(){
  (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`)
  for more flexibility, feel free to use them separately.
 
+### Make your CSS
+
 To use this font in your CSS, you could add a mixin like in this
  [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
  You can also generate your CSS automatically with
  [`gulp-iconfont-scss`](https://github.com/backflip/gulp-iconfont-css).
+ 
+It's also easy to make a CSS template by yourself. Like [this example](https://github.com/cognitom/symbols-for-sketch/blob/master/gulpfile.js#L17), `gulp-consolidate` is useful to handling [such a template](https://github.com/cognitom/symbols-for-sketch/blob/master/templates/fontawesome-style.css).
+
+```javascript
+var gulp = require('gulp');
+var iconfont = require('gulp-iconfont');
+var consolidate = require('gulp-consolidate');
+
+gulp.task('Iconfont', function(){
+  gulp.src(['assets/icons/*.svg'])
+    .pipe(iconfont({ fontName: 'myfont' }))
+    .on('codepoints', function(codepoints, options) {
+      gulp.src('templates/myfont.css')
+        .pipe(consolidate('lodash', {
+          glyphs: codepoints,
+          fontName: 'myfont',
+          fontPath: '../fonts/',
+          className: 's'
+        }))
+        .pipe(gulp.dest('www/css/'));
+    })
+    .pipe(gulp.dest('www/fonts/'));
+});
+```
+
+### Font hinting
 
 You may also want to hint your TTF fonts, you can use `gulp-spawn`,
  `gulp-filter` and `ttfautohint` for that matter. First install `ttfautohint`
