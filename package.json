@@ -37,7 +37,7 @@
     "font"
   ],
   "dependencies": {
-    "gulp-util": "~2.2.19",
+    "gulp-util": "~3.0.0",
     "gulp-svg2ttf": "0.0.9",
     "gulp-ttf2eot": "0.0.10",
     "gulp-ttf2woff": "0.0.8",
@@ -45,11 +45,11 @@
     "plexer": "0.0.3"
   },
   "devDependencies": {
-    "gulp": "~3.8.5",
-    "mocha": "~1.20.1",
-    "event-stream": "~3.1.5",
+    "gulp": "~3.8.7",
+    "mocha": "~1.21.4",
+    "event-stream": "~3.1.7",
     "mocha-lcov-reporter": "0.0.1",
-    "coveralls": "~2.10.1",
-    "istanbul": "~0.2.13"
+    "coveralls": "~2.11.1",
+    "istanbul": "~0.3.0"
   }
 }
