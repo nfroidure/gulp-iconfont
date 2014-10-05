@@ -22,7 +22,7 @@ Date = (function(d) {
 describe('gulp-iconfont', function() {
 
   afterEach(function() {
-    //rimraf.sync(__dirname + '/results');
+    rimraf.sync(__dirname + '/results');
   });
 
 
