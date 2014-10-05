@@ -24,7 +24,6 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "main": "src/index.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha tests/*.mocha.js",
     "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- tests/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
@@ -38,18 +37,19 @@
   ],
   "dependencies": {
     "gulp-util": "~3.0.1",
-    "gulp-svg2ttf": "0.0.9",
+    "gulp-svg2ttf": "0.1.0",
     "gulp-ttf2eot": "0.0.10",
     "gulp-ttf2woff": "0.0.8",
     "gulp-svgicons2svgfont": "0.2.0",
     "plexer": "0.0.3"
   },
   "devDependencies": {
-    "gulp": "~3.8.8",
-    "mocha": "~1.21.4",
-    "event-stream": "~3.1.7",
-    "mocha-lcov-reporter": "0.0.1",
     "coveralls": "~2.11.2",
-    "istanbul": "~0.3.2"
+    "event-stream": "~3.1.7",
+    "gulp": "~3.8.8",
+    "istanbul": "~0.3.2",
+    "mocha": "~1.21.4",
+    "mocha-lcov-reporter": "0.0.1",
+    "rimraf": "^2.2.8"
   }
 }

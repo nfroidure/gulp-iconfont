@@ -5,6 +5,7 @@ var fs = require('fs')
   , iconfont = require('../src/index')
   , util = require('util')
   , assert = require('assert')
+  , rimraf = require('rimraf')
 ;
 
 // Erasing date to get an invariant created and modified font date
@@ -19,6 +20,11 @@ Date = (function(d) {
 })(Date);
 
 describe('gulp-iconfont', function() {
+
+  afterEach(function() {
+    //rimraf.sync(__dirname + '/results');
+  });
+
 
   describe('in stream mode', function() {
 
@@ -49,11 +55,6 @@ describe('gulp-iconfont', function() {
               fs.readFileSync(__dirname+'/results/iconsfont.woff', 'utf8'),
               fs.readFileSync(__dirname+'/expected/iconsfont.woff', 'utf8')
             );
-            fs.unlinkSync(__dirname + '/results/iconsfont.svg');
-            fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
-            fs.unlinkSync(__dirname + '/results/iconsfont.eot');
-            fs.unlinkSync(__dirname + '/results/iconsfont.woff');
-            fs.rmdirSync(__dirname + '/results/');
             done();
           }, 3000);
         }));
@@ -75,11 +76,6 @@ describe('gulp-iconfont', function() {
           setTimeout(function() {
             assert.deepEqual(codepoints, JSON.parse(fs.readFileSync(
                 __dirname + '/expected/codepoints.json', 'utf8')));
-            fs.unlinkSync(__dirname + '/results/iconsfont.svg');
-            fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
-            fs.unlinkSync(__dirname + '/results/iconsfont.eot');
-            fs.unlinkSync(__dirname + '/results/iconsfont.woff');
-            fs.rmdirSync(__dirname + '/results/');
             done();
           }, 3000);
         }));
@@ -112,11 +108,6 @@ describe('gulp-iconfont', function() {
             fs.readFileSync(__dirname+'/results/iconsfont.woff', 'utf8'),
             fs.readFileSync(__dirname+'/expected/iconsfont.woff', 'utf8')
           );
-          fs.unlinkSync(__dirname + '/results/iconsfont.svg');
-          fs.unlinkSync(__dirname + '/results/iconsfont.ttf');
-          fs.unlinkSync(__dirname + '/results/iconsfont.eot');
-          fs.unlinkSync(__dirname + '/results/iconsfont.woff');
-          fs.rmdirSync(__dirname + '/results/');
           done();
         }));
     });
