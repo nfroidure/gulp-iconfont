@@ -42,7 +42,7 @@ gulp.task('Iconfont', function(){
 To use this font in your CSS, you could add a mixin like in this
  [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
  You can also generate your CSS automatically with
- [`gulp-iconfont-scss`](https://github.com/backflip/gulp-iconfont-css).
+ [`gulp-iconfont-css`](https://github.com/backflip/gulp-iconfont-css).
  
 It's also easy to make a CSS template by yourself. Like
  [this example](https://github.com/cognitom/symbols-for-sketch/blob/master/gulpfile.js#L17),
