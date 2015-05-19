@@ -36,20 +36,20 @@
     "font"
   ],
   "dependencies": {
-    "gulp-util": "~3.0.1",
-    "gulp-svg2ttf": "1.0.0",
-    "gulp-ttf2eot": "1.0.0",
-    "gulp-ttf2woff": "1.0.0",
-    "gulp-svgicons2svgfont": "1.0.0",
+    "gulp-util": "~3.0.4",
+    "gulp-svg2ttf": "1.0.3",
+    "gulp-ttf2eot": "1.0.1",
+    "gulp-ttf2woff": "1.0.1",
+    "gulp-svgicons2svgfont": "1.2.0",
     "plexer": "0.0.3"
   },
   "devDependencies": {
     "coveralls": "~2.11.2",
-    "event-stream": "~3.1.7",
-    "gulp": "~3.8.10",
-    "istanbul": "~0.3.2",
-    "mocha": "~2.0.1",
-    "mocha-lcov-reporter": "0.0.1",
-    "rimraf": "^2.2.8"
+    "event-stream": "~3.3.1",
+    "gulp": "~3.8.11",
+    "istanbul": "~0.3.14",
+    "mocha": "~2.2.5",
+    "mocha-lcov-reporter": "0.0.2",
+    "rimraf": "^2.3.4"
   }
 }
