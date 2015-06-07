@@ -99,6 +99,14 @@ If [ttfautohint](http://www.freetype.org/ttfautohint/) is installed on your
  system, you may want to auto hint your fonts. Beware that this is an
  experimental and untested feature (beware to use at least the 0.93 version).
 
+#### options.woff2
+Type: `Boolean`
+Default value: `false`
+
+You can use the [woff2](https://gist.github.com/sergejmueller/cf6b4f2133bcb3e2f64a)
+ format if you have the [woff2_compress tool](https://github.com/google/woff2)
+ installed in your system and in your env path.
+
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
  are available:

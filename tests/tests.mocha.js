@@ -104,6 +104,38 @@ describe('gulp-iconfont', function() {
           done();
         }));
     });
+
+    it('should work with woff2 option', function(done) {
+      gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})
+        .pipe(iconfont({
+          fontName: 'iconsfont',
+          woff2: true
+        }))
+        .pipe(gulp.dest(__dirname+'/results/'))
+        .pipe(es.wait(function() {
+          assert.equal(
+            fs.readFileSync(__dirname+'/results/iconsfont.svg', 'utf8'),
+            fs.readFileSync(__dirname+'/expected/iconsfont.svg', 'utf8')
+          );/*
+          assert.equal(
+            fs.readFileSync(__dirname+'/results/iconsfont.ttf', 'utf8'),
+            fs.readFileSync(__dirname+'/expected/iconsfont.ttf', 'utf8')
+          );*/
+          assert.equal(
+            fs.readFileSync(__dirname+'/results/iconsfont.eot', 'utf8'),
+            fs.readFileSync(__dirname+'/expected/iconsfont.eot', 'utf8')
+          );
+          assert.equal(
+            fs.readFileSync(__dirname+'/results/iconsfont.woff', 'utf8'),
+            fs.readFileSync(__dirname+'/expected/iconsfont.woff', 'utf8')
+          );
+          assert.equal(
+            fs.readFileSync(__dirname+'/results/iconsfont.woff2', 'utf8'),
+            fs.readFileSync(__dirname+'/expected/iconsfont.woff2', 'utf8')
+          );
+          done();
+        }));
+    });
 /* Unable to make it work locally
     it.only('should work with autohinted iconsfont', function(done) {
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})

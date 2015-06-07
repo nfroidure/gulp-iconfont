@@ -3,4 +3,10 @@ node_js:
   - 0.10
 
 script:
-  - npm test
+  - git clone https://github.com/nfroidure/woff2.git
+  - cd woff2
+  - git submodule init
+  - git submodule update
+  - make clean all
+  - cd ..
+  - env PATH=$PATH:$(dirname $0)/woff2 npm test

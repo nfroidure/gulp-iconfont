@@ -36,7 +36,9 @@
     "font"
   ],
   "dependencies": {
+    "gulp-clone": "^1.0.0",
     "gulp-cond": "0.0.2",
+    "gulp-rename": "^1.2.2",
     "gulp-spawn": "^0.3.0",
     "gulp-svg2ttf": "1.0.4",
     "gulp-svgicons2svgfont": "2.0.0",

@@ -7,6 +7,8 @@ var gutil = require('gulp-util')
   , cond = require('gulp-cond')
   , filter = require('streamfilter')
   , spawn = require('gulp-spawn')
+  , rename = require('gulp-rename')
+  , clone = require('gulp-clone')
 ;
 
 function gulpFontIcon(options) {
@@ -40,7 +42,36 @@ function gulpFontIcon(options) {
   // Generating EOT font
     .pipe(ttf2eot({clone: true}))
   // Generating WOFF font
-    .pipe(ttf2woff({clone: true}));
+    .pipe(ttf2woff({clone: true}))
+  // Generating WOFF2 font
+    .pipe(cond(options.woff2, function () {
+      var nonTTFfilter = filter(function(file, unused, cb) {
+        cb(file.path.indexOf('.ttf') !== file.path.length - 4);
+      }, {
+        objectMode: true,
+        restore: true,
+        passthrough: true
+      });
+      var cloneSink = clone.sink();
+      return duplexer(
+        {objectMode: true},
+        nonTTFfilter,
+        nonTTFfilter
+          .pipe(cloneSink)
+          .pipe(spawn({
+            cmd: '/bin/sh',
+            args: [
+              '-c',
+              'cat | woff2_compress /dev/stdin /dev/stdout | cat'
+            ]
+          }))
+          .pipe(rename({
+            extname: ".woff2"
+          }))
+          .pipe(cloneSink.tap())
+          .pipe(nonTTFfilter.restore)
+      );
+    }));
 
   var duplex = duplexer({objectMode: true}, inStream, outStream);
 
