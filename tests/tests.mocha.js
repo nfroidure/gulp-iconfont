@@ -1,13 +1,12 @@
-var fs = require('fs')
-  , gulp = require('gulp')
-  , gutil = require('gulp-util')
-  , es = require('event-stream')
-  , iconfont = require('../src/index')
-  , util = require('util')
-  , assert = require('assert')
-  , rimraf = require('rimraf')
-  , neatequal = require('neatequal')
-;
+var fs = require('fs');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var es = require('event-stream');
+var iconfont = require('../src/index');
+var util = require('util');
+var assert = require('assert');
+var rimraf = require('rimraf');
+var neatequal = require('neatequal');
 
 // Erasing date to get an invariant created and modified font date
 // See: https://github.com/fontello/svg2ttf/blob/c6de4bd45d50afc6217e150dbc69f1cd3280f8fe/lib/sfnt.js#L19

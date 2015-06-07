@@ -1,15 +1,14 @@
-var gutil = require('gulp-util')
-  , duplexer = require('plexer')
-  , svgicons2svgfont = require('gulp-svgicons2svgfont')
-  , svg2ttf = require('gulp-svg2ttf')
-  , ttf2eot = require('gulp-ttf2eot')
-  , ttf2woff = require('gulp-ttf2woff')
-  , cond = require('gulp-cond')
-  , filter = require('streamfilter')
-  , spawn = require('gulp-spawn')
-  , rename = require('gulp-rename')
-  , clone = require('gulp-clone')
-;
+var gutil = require('gulp-util');
+var duplexer = require('plexer');
+var svgicons2svgfont = require('gulp-svgicons2svgfont');
+var svg2ttf = require('gulp-svg2ttf');
+var ttf2eot = require('gulp-ttf2eot');
+var ttf2woff = require('gulp-ttf2woff');
+var cond = require('gulp-cond');
+var filter = require('streamfilter');
+var spawn = require('gulp-spawn');
+var rename = require('gulp-rename');
+var clone = require('gulp-clone');
 
 function gulpFontIcon(options) {
   options = options || {};
