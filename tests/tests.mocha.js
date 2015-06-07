@@ -6,6 +6,7 @@ var fs = require('fs')
   , util = require('util')
   , assert = require('assert')
   , rimraf = require('rimraf')
+  , neatequal = require('neatequal')
 ;
 
 // Erasing date to get an invariant created and modified font date
@@ -66,16 +67,18 @@ describe('gulp-iconfont', function() {
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
         .pipe(iconfont({
           fontName: 'iconsfont'
-        })).on('codepoints', function(cpts) {
+        })).on('glyphs', function(cpts) {
           codepoints = cpts;
         })
-        .pipe(gulp.dest(__dirname+'/results/'))
+        .pipe(gulp.dest(__dirname + '/results/'))
         .pipe(es.wait(function() {
           // Trick to wait for datas beeing written to disk...
           // https://github.com/wearefractal/vinyl-fs/issues/7
           setTimeout(function() {
-            assert.deepEqual(codepoints, JSON.parse(fs.readFileSync(
-                __dirname + '/expected/codepoints.json', 'utf8')));
+            neatequal(codepoints,
+              JSON.parse(fs.readFileSync(
+                __dirname + '/expected/codepoints.json', 'utf8'))
+            );
             done();
           }, 3000);
         }));

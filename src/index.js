@@ -19,8 +19,8 @@ function gulpFontIcon(options) {
   var duplex = duplexer({objectMode: true}, inStream, outStream);
 
   // Re-emit codepoint mapping event
-  inStream.on('codepoints', function(codepoints) {
-    duplex.emit('codepoints', codepoints, options);
+  inStream.on('glyphs', function(glyphs) {
+    duplex.emit('glyphs', glyphs, options);
   });
 
   // Re-emit glyph mapping event

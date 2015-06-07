@@ -23,11 +23,11 @@ gulp.task('Iconfont', function(){
   gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
       fontName: 'myfont', // required
-      appendCodepoints: true // recommended option
+      appendUnicode: true // recommended option
     }))
-      .on('codepoints', function(codepoints, options) {
+      .on('glyphs', function(glyphs, options) {
         // CSS templating, e.g.
-        console.log(codepoints, options);
+        console.log(glyphs, options);
       })
     .pipe(gulp.dest('www/fonts/'));
 });
@@ -36,8 +36,10 @@ gulp.task('Iconfont', function(){
 `gulp-iconfont` bundles several plugins to bring a simpler API
  (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`)
  for more flexibility, feel free to use them separately.
- 
- If some font glyphs aren't converted properly you should append the `normalize:true` option and a `fontHeight` greater than 1000 (`fontHeight: 1001`)
+
+ If some font glyphs aren't converted properly you should append the
+  `normalize:true` option and a `fontHeight` greater than 1000
+  (`fontHeight: 1001`).
 
 ### Make your CSS
 
@@ -45,7 +47,7 @@ To use this font in your CSS, you could add a mixin like in this
  [real world example](https://github.com/ChtiJS/chtijs.francejs.org/blob/master/documents/less/_icons.less).
  You can also generate your CSS automatically with
  [`gulp-iconfont-css`](https://github.com/backflip/gulp-iconfont-css).
- 
+
 It's also easy to make a CSS template by yourself. Like
  [this example](https://github.com/cognitom/symbols-for-sketch/blob/master/gulpfile.js#L17),
  `gulp-consolidate` is useful to handling
@@ -59,10 +61,10 @@ var consolidate = require('gulp-consolidate');
 gulp.task('Iconfont', function(){
   gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({ fontName: 'myfont' }))
-    .on('codepoints', function(codepoints, options) {
+    .on('glyphs', function(glyphs, options) {
       gulp.src('templates/myfont.css')
         .pipe(consolidate('lodash', {
-          glyphs: codepoints,
+          glyphs: glyphs,
           fontName: 'myfont',
           fontPath: '../fonts/',
           className: 's'
@@ -102,7 +104,7 @@ Add issues to the right repos:
 * every fonts doens't display as expected: submit the issue to the
  [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont) repository.
 * only some fonts are damaged? Please look at the font format the targeted
- browser actually use and then, submit you issue to one of those projects:
+ browser actually use and then, submit your issue to one of those projects:
  [svg2ttf](https://github.com/fontello/svg2ttf),
  [ttf2eot](https://github.com/fontello/ttf2eot),
  [ttf2woff](https://github.com/fontello/ttf2woff).
@@ -121,9 +123,11 @@ The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2sv
 * options.fontHeight
 * options.descent
 * options.log
+* options.error
 
 So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
-* options.appendCodepoints
+* options.startUnicode
+* options.appendUnicode
 
 ## Preparing SVG's
 
@@ -133,7 +137,7 @@ Beware that your SVG icons must have a high enough height. 500 is a minimum. If
 
 ### Inkscape
 Degroup every shapes (Ctrl+Shift+G), convert to pathes (Ctrl+Maj+C)  and merge
- them (Ctrl++). Then save you SVG, prefer 'simple SVG' file type.
+ them (Ctrl++). Then save your SVG, prefer 'simple SVG' file type.
 
 ### Illustrator
 
@@ -155,7 +159,10 @@ More in-depth information: [http://www.adobe.com/inspire/2013/09/exporting-svg-i
 
 ### Sketch
 
-[Sketch](http://bohemiancoding.com/sketch/) is a relatively new drawing tool on Mac. With help of [Sketch Tools](http://bohemiancoding.com/sketch/tool/) and [gulp-sketch](https://github.com/cognitom/gulp-sketch), you can directly create fonts from your Sketch file. No need to export intermediate SVGs.
+[Sketch](http://bohemiancoding.com/sketch/) is a relatively new drawing tool on
+ Mac. With help of [Sketch Tools](http://bohemiancoding.com/sketch/tool/) and
+ [gulp-sketch](https://github.com/cognitom/gulp-sketch), you can directly create
+ fonts from your Sketch file. No need to export intermediate SVGs.
 
 ![Directly create fonts from your Sketch file](https://github.com/cognitom/symbols-for-sketch/raw/master/images/webfonts.png)
 
