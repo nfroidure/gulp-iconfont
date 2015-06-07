@@ -4,13 +4,39 @@ var gutil = require('gulp-util')
   , svg2ttf = require('gulp-svg2ttf')
   , ttf2eot = require('gulp-ttf2eot')
   , ttf2woff = require('gulp-ttf2woff')
+  , cond = require('gulp-cond')
+  , filter = require('streamfilter')
+  , spawn = require('gulp-spawn')
 ;
 
 function gulpFontIcon(options) {
+  options = options || {};
+  options.autohint = !!options.autohint;
   // Generating SVG font and saving her
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
-  var outStream = inStream.pipe(svg2ttf({clone: true}))
+  var outStream = inStream.pipe(svg2ttf({clone: false}))
+  // TTFAutoHint
+    .pipe(cond(options.autohint, function () {
+      var nonTTFfilter = filter(function(file, unused, cb) {
+        cb(file.path.indexOf('.ttf') !== file.path.length - 4);
+      }, {
+        objectMode: true,
+        restore: true,
+        passthrough: true
+      });
+      return duplexer(
+        {objectMode: true},
+        nonTTFfilter,
+        nonTTFfilter.pipe(spawn({
+          cmd: '/bin/sh',
+          args: [
+            '-c',
+            'cat | ttfautohint --symbol --fallback-script=latn --windows-compatibility --no-info /dev/stdin /dev/stdout | cat'
+          ]
+        })).pipe(nonTTFfilter.restore)
+      );
+    }))
   // Generating EOT font
     .pipe(ttf2eot({clone: true}))
   // Generating WOFF font

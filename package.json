@@ -36,12 +36,15 @@
     "font"
   ],
   "dependencies": {
-    "gulp-util": "~3.0.5",
+    "gulp-cond": "0.0.2",
+    "gulp-spawn": "^0.3.0",
     "gulp-svg2ttf": "1.0.4",
+    "gulp-svgicons2svgfont": "2.0.0",
     "gulp-ttf2eot": "1.0.2",
     "gulp-ttf2woff": "1.0.2",
-    "gulp-svgicons2svgfont": "2.0.0",
-    "plexer": "0.0.3"
+    "gulp-util": "~3.0.5",
+    "plexer": "0.0.3",
+    "streamfilter": "^1.0.1"
   },
   "devDependencies": {
     "coveralls": "~2.11.2",

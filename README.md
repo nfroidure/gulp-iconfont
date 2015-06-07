@@ -75,28 +75,6 @@ gulp.task('Iconfont', function(){
 });
 ```
 
-### Font hinting
-
-You may also want to hint your TTF fonts, you can use `gulp-spawn`,
- `gulp-filter` and `ttfautohint` for that matter. First install `ttfautohint`
- (use at least the 0.93 version), then, in your gulpfile:
-```js
-var ttfFilter = filter('*.ttf');
-
-  gulp.src(['assets/icons/*.svg'])
-  .pipe(iconfont(/* ... */))
-  .pipe(ttfFilter)
-  .pipe(spawn({
-    cmd: '/bin/sh',
-    args: [
-      '-c',
-      'cat | ttfautohint /dev/stdin /dev/stdout | cat'
-    ]
-  }))
-  .pipe(ttfFilter.restore())
-  .pipe(gulp.dest('www/fonts/'))
-```
-
 ## Issues
 
 Add issues to the right repos:
@@ -112,6 +90,14 @@ Add issues to the right repos:
 ## API
 
 ### iconfont(options)
+
+#### options.autohint
+Type: `Boolean`
+Default value: `false`
+
+If [ttfautohint](http://www.freetype.org/ttfautohint/) is installed on your
+ system, you may want to auto hint your fonts. Beware that this is an
+ experimental and untested feature (beware to use at least the 0.93 version).
 
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
