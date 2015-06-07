@@ -30,7 +30,6 @@ describe('gulp-iconfont', function() {
   describe('in stream mode', function() {
 
     it('should work with iconsfont', function(done) {
-      this.timeout(5000);
       gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
         .pipe(iconfont({
           fontName: 'iconsfont'
@@ -133,7 +132,7 @@ describe('gulp-iconfont', function() {
           done();
         }));
     });
-
-  });
 */
+  });
+
 });

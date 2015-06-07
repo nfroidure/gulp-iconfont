@@ -15,7 +15,7 @@ function gulpFontIcon(options) {
   // Generating SVG font and saving her
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
-  var outStream = inStream.pipe(svg2ttf({clone: false}))
+  var outStream = inStream.pipe(svg2ttf({clone: true}))
   // TTFAutoHint
     .pipe(cond(options.autohint, function () {
       var nonTTFfilter = filter(function(file, unused, cb) {
