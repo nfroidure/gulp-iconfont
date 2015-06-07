@@ -15,4 +15,4 @@ script:
   - git submodule update
   - make clean all
   - cd ..
-  - env PATH=$PATH:$(dirname $0)/woff2 npm test
+  - env PATH="$PATH:$(dirname \"$(pwd)\")/woff2" npm test
