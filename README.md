@@ -104,8 +104,11 @@ Type: `Boolean`
 Default value: `false`
 
 You can use the [woff2](https://gist.github.com/sergejmueller/cf6b4f2133bcb3e2f64a)
- format if you have the [woff2_compress tool](https://github.com/google/woff2)
+ format if you have the [woff2_compress tool](https://github.com/nfroidure/woff2)
  installed in your system and in your env path.
+
+Note that i had to clone the project and you'll have to use this fork until
+ it gets merged or it allows stdin/stdout usage.
 
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
