@@ -51,7 +51,7 @@ To use this font in your CSS, you could add a mixin like in this
 It's also easy to make a CSS template by yourself. Like
  [this example](https://github.com/cognitom/symbols-for-sketch/blob/master/gulpfile.js#L17),
  `gulp-consolidate` is useful to handling
- [such a template](https://github.com/cognitom/symbols-for-sketch/blob/master/templates/fontawesome-style.css).
+ [such a template](https://github.com/cognitom/symbols-for-sketch/blob/master/templates/fontawesome-style.css). The template is outdated, **change** every occurrence of `glyph.codepoint.toString(16).toUpperCase()` to `glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase()`, otherwise it will not work.
 
 ```javascript
 var gulp = require('gulp');
