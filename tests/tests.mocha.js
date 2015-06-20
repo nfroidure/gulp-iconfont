@@ -27,6 +27,7 @@ describe('gulp-iconfont', function() {
       describe('in stream mode', function() {
 
         it('should work with iconsfont', function(done) {
+          this.timeout(3000);
           var contents = [];
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
             .pipe(iconfont({

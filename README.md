@@ -99,26 +99,24 @@ If [ttfautohint](http://www.freetype.org/ttfautohint/) is installed on your
  system, you may want to auto hint your fonts. Beware that this is an
  experimental and untested feature (beware to use at least the 0.93 version).
 
-#### options.woff2
+#### options.spawnWoff2
 Type: `Boolean`
 Default value: `false`
 
 You can use the [woff2](https://gist.github.com/sergejmueller/cf6b4f2133bcb3e2f64a)
- format if you have the [woff2_compress tool](https://github.com/nfroidure/woff2)
- installed in your system and in your env path.
+ binaries if you have the [woff2_compress tool](https://github.com/nfroidure/woff2)
+ installed in your system and in your env path instead of the slower Node
+ converter.
 
 Note that i had to clone the project and you'll have to use this fork until
  it [gets merged](https://github.com/google/woff2/pull/21) or it allows
 
 #### options.svg
 Type: `Boolean`
-Default value: `true`
+Default value: `false`
 
-Since SVG fonts are deprecated in some browsers, you may want to avoid
-  generating them.
-
-Since this option will probably default to `false` in the next major version
- (probably 3.0.0), it is recommanded to set it even if you use the default value.
+Since SVG fonts are deprecated in some browsers, they are disabled per default.
+ You may want to continue generating them.
 
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)

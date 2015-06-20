@@ -18,7 +18,10 @@ function gulpFontIcon(options) {
   // Generating SVG font and saving her
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
-  var outStream = inStream.pipe(svg2ttf({clone: options.svg}))
+  var outStream = inStream
+    .pipe(svg2ttf({clone: options.svg}).on('error', function(err) {
+      outStream.emit('error', err);
+    }))
   // TTFAutoHint
     .pipe(cond(options.autohint, function () {
       var nonTTFfilter = filter(function(file, unused, cb) {
@@ -38,12 +41,18 @@ function gulpFontIcon(options) {
             'cat | ttfautohint --symbol --fallback-script=latn --windows-compatibility --no-info /dev/stdin /dev/stdout | cat'
           ]
         })).pipe(nonTTFfilter.restore)
-      );
+      ).on('error', function(err) {
+        outStream.emit('error', err);
+      });
     }))
   // Generating EOT font
-    .pipe(ttf2eot({clone: true}))
+    .pipe(ttf2eot({clone: true}).on('error', function(err) {
+      outStream.emit('error', err);
+    }))
   // Generating WOFF font
-    .pipe(ttf2woff({clone: true}))
+    .pipe(ttf2woff({clone: true}).on('error', function(err) {
+      outStream.emit('error', err);
+    }))
   // Generating WOFF2 font
     .pipe(cond(options.spawnWoff2, function () {
       var nonTTFfilter = filter(function(file, unused, cb) {
@@ -72,7 +81,11 @@ function gulpFontIcon(options) {
           .pipe(cloneSink.tap())
           .pipe(nonTTFfilter.restore)
       );
-    }, ttf2woff2.bind(null, {clone: true})));
+    }, function() {
+      return ttf2woff2({clone: true}).on('error', function(err) {
+        outStream.emit('error', err);
+      });
+    }));
 
   var duplex = duplexer({objectMode: true}, inStream, outStream);
 
