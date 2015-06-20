@@ -109,7 +109,16 @@ You can use the [woff2](https://gist.github.com/sergejmueller/cf6b4f2133bcb3e2f6
 
 Note that i had to clone the project and you'll have to use this fork until
  it [gets merged](https://github.com/google/woff2/pull/21) or it allows
- stdin/stdout usage.
+
+#### options.svg
+Type: `Boolean`
+Default value: `true`
+
+Since SVG fonts are deprecated in some browsers, you may want to avoid
+  generating them.
+
+Since this option will probably default to `false` in the next major version
+ (probably 3.0.0), it is recommanded to set it even if you use the default value.
 
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)

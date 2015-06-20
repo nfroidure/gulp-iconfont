@@ -40,8 +40,8 @@
     "gulp-cond": "0.0.2",
     "gulp-rename": "^1.2.2",
     "gulp-spawn": "^0.3.0",
-    "gulp-svg2ttf": "1.0.4",
-    "gulp-svgicons2svgfont": "2.0.0",
+    "gulp-svg2ttf": "1.1.1",
+    "gulp-svgicons2svgfont": "2.1.0",
     "gulp-ttf2eot": "1.0.2",
     "gulp-ttf2woff": "1.0.2",
     "gulp-util": "~3.0.5",
@@ -52,10 +52,11 @@
     "coveralls": "~2.11.2",
     "event-stream": "~3.3.1",
     "gulp": "~3.9.0",
-    "istanbul": "~0.3.14",
+    "istanbul": "~0.3.15",
     "mocha": "~2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "neatequal": "^1.0.0",
-    "rimraf": "^2.3.4"
+    "rimraf": "^2.4.0",
+    "streamtest": "^1.2.1"
   }
 }

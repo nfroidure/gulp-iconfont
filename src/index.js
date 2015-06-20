@@ -13,10 +13,11 @@ var clone = require('gulp-clone');
 function gulpFontIcon(options) {
   options = options || {};
   options.autohint = !!options.autohint;
+  options.svg = 'boolean' === typeof options.svg ? options.svg : true;
   // Generating SVG font and saving her
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
-  var outStream = inStream.pipe(svg2ttf({clone: true}))
+  var outStream = inStream.pipe(svg2ttf({clone: options.svg}))
   // TTFAutoHint
     .pipe(cond(options.autohint, function () {
       var nonTTFfilter = filter(function(file, unused, cb) {
@@ -61,7 +62,7 @@ function gulpFontIcon(options) {
             cmd: '/bin/sh',
             args: [
               '-c',
-              'cat | woff2_compress /dev/stdin /dev/stdout | cat'
+              'cat | woff2_compress /dev/stdin /dev/stdout | tee plop.txt | cat'
             ]
           }))
           .pipe(rename({
