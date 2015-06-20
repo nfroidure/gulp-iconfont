@@ -4,6 +4,7 @@ var svgicons2svgfont = require('gulp-svgicons2svgfont');
 var svg2ttf = require('gulp-svg2ttf');
 var ttf2eot = require('gulp-ttf2eot');
 var ttf2woff = require('gulp-ttf2woff');
+var ttf2woff2 = require('gulp-ttf2woff2');
 var cond = require('gulp-cond');
 var filter = require('streamfilter');
 var spawn = require('gulp-spawn');
@@ -44,7 +45,7 @@ function gulpFontIcon(options) {
   // Generating WOFF font
     .pipe(ttf2woff({clone: true}))
   // Generating WOFF2 font
-    .pipe(cond(options.woff2, function () {
+    .pipe(cond(options.spawnWoff2, function () {
       var nonTTFfilter = filter(function(file, unused, cb) {
         cb(file.path.indexOf('.ttf') !== file.path.length - 4);
       }, {
@@ -71,7 +72,7 @@ function gulpFontIcon(options) {
           .pipe(cloneSink.tap())
           .pipe(nonTTFfilter.restore)
       );
-    }));
+    }, ttf2woff2.bind(null, {clone: true})));
 
   var duplex = duplexer({objectMode: true}, inStream, outStream);
 

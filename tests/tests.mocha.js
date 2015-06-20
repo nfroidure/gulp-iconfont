@@ -1,7 +1,6 @@
 var fs = require('fs');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var es = require('event-stream');
 var iconfont = require('../src/index');
 var util = require('util');
 var assert = require('assert');
@@ -54,10 +53,14 @@ describe('gulp-iconfont', function() {
                     );
                     assert.equal(
                       contents[2],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.woff', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2', 'utf8')
                     );
                     assert.equal(
                       contents[3],
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff', 'utf8')
+                    );
+                    assert.equal(
+                      contents[4],
                       fs.readFileSync(__dirname + '/expected/iconsfont.eot', 'utf8')
                     );
                     done();
@@ -107,10 +110,14 @@ describe('gulp-iconfont', function() {
               );
               assert.deepEqual(
                 files[2].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont.woff')
+                fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
               );
               assert.deepEqual(
                 files[3].contents,
+                fs.readFileSync(__dirname + '/expected/iconsfont.woff')
+              );
+              assert.deepEqual(
+                files[4].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.eot')
               );
               done();
@@ -121,7 +128,7 @@ describe('gulp-iconfont', function() {
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})
             .pipe(iconfont({
               fontName: 'iconsfont',
-              woff2: true
+              spawnWoff2: true
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
