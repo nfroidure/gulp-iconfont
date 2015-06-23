@@ -94,11 +94,6 @@ function gulpFontIcon(options) {
     duplex.emit('glyphs', glyphs, options);
   });
 
-  // Re-emit glyph mapping event
-  inStream.on('glyph', function(glyph) {
-    duplex.emit('glyph', glyph, options);
-  });
-
   return duplex;
 }
 
