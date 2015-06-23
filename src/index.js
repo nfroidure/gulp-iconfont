@@ -14,7 +14,7 @@ var clone = require('gulp-clone');
 function gulpFontIcon(options) {
   options = options || {};
   options.autohint = !!options.autohint;
-  options.svg = 'boolean' === typeof options.svg ? options.svg : true;
+  options.svg = 'boolean' === typeof options.svg ? options.svg : false;
   // Generating SVG font and saving her
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her

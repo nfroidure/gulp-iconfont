@@ -26,12 +26,13 @@ describe('gulp-iconfont', function() {
 
       describe('in stream mode', function() {
 
-        it('should work with iconsfont', function(done) {
+        it('should output SVG font with svg option to true', function(done) {
           this.timeout(5000);
           var contents = [];
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
             .pipe(iconfont({
-              fontName: 'iconsfont'
+              fontName: 'iconsfont',
+              svg: true
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
@@ -62,6 +63,46 @@ describe('gulp-iconfont', function() {
                     );
                     assert.equal(
                       contents[4],
+                      fs.readFileSync(__dirname + '/expected/iconsfont.eot', 'utf8')
+                    );
+                    done();
+                  }
+                }));
+              });
+            }));
+        });
+
+        it('should work with iconsfont', function(done) {
+          var contents = [];
+          gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
+            .pipe(iconfont({
+              fontName: 'iconsfont'
+            }))
+            .pipe(streamtest[version].toObjects(function(err, files) {
+              if(err) {
+                return done(err);
+              }
+              files.forEach(function(file, index) {
+                file.contents.pipe(streamtest[version].toChunks(function(err, chunks) {
+                  if(err) {
+                    return done(err);
+                  }
+                  contents.push(Buffer.concat(chunks).toString('utf-8'));
+                  if(contents.length === files.length) {
+                    assert.equal(
+                      contents[0],
+                      fs.readFileSync(__dirname + '/expected/iconsfont.ttf', 'utf8')
+                    );
+                    assert.equal(
+                      contents[1],
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2', 'utf8')
+                    );
+                    assert.equal(
+                      contents[2],
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff', 'utf8')
+                    );
+                    assert.equal(
+                      contents[3],
                       fs.readFileSync(__dirname + '/expected/iconsfont.eot', 'utf8')
                     );
                     done();
@@ -103,29 +144,25 @@ describe('gulp-iconfont', function() {
               }
               assert.deepEqual(
                 files[0].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont.svg')
-              );
-              assert.deepEqual(
-                files[1].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.ttf')
               );
               assert.deepEqual(
-                files[2].contents,
+                files[1].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
               );
               assert.deepEqual(
-                files[3].contents,
+                files[2].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.woff')
               );
               assert.deepEqual(
-                files[4].contents,
+                files[3].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.eot')
               );
               done();
             }));
         });
 
-        it('should work with woff2 option', function(done) {
+        it('should work with spawnWoff2 option', function(done) {
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})
             .pipe(iconfont({
               fontName: 'iconsfont',
@@ -137,22 +174,18 @@ describe('gulp-iconfont', function() {
               }
               assert.deepEqual(
                 files[0].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont.svg')
-              );
-              assert.deepEqual(
-                files[1].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.ttf')
               );
               assert.deepEqual(
-                files[2].contents,
+                files[1].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.woff')
               );
               assert.deepEqual(
-                files[3].contents,
+                files[2].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.eot')
               );
               assert.deepEqual(
-                files[4].contents,
+                files[3].contents,
                 fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
               );
               done();
@@ -171,19 +204,19 @@ describe('gulp-iconfont', function() {
               }
               assert.deepEqual(
                 files[0].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont.svg')
+                fs.readFileSync(__dirname + '/expected/iconsfont.ttf')
               );
               assert.deepEqual(
                 files[1].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont-autohinted.ttf')
+                fs.readFileSync(__dirname + '/expected/iconsfont.woff')
               );
               assert.deepEqual(
                 files[2].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont-autohinted.woff')
+                fs.readFileSync(__dirname + '/expected/iconsfont.eot')
               );
               assert.deepEqual(
                 files[3].contents,
-                fs.readFileSync(__dirname + '/expected/iconsfont-autohinted.eot')
+                fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
               );
               done();
             }));
