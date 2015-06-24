@@ -19,7 +19,10 @@ function gulpFontIcon(options) {
   var inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
   var outStream = inStream
-    .pipe(svg2ttf({clone: options.svg}).on('error', function(err) {
+    .pipe(svg2ttf({
+      clone: options.svg,
+      timestamp: options.timestamp
+    }).on('error', function(err) {
       outStream.emit('error', err);
     }))
   // TTFAutoHint

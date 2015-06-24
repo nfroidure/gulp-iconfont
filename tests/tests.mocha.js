@@ -8,18 +8,8 @@ var rimraf = require('rimraf');
 var neatequal = require('neatequal');
 var streamtest = require('streamtest');
 
-// Erasing date to get an invariant created and modified font date
-// See: https://github.com/fontello/svg2ttf/blob/c6de4bd45d50afc6217e150dbc69f1cd3280f8fe/lib/sfnt.js#L19
-Date = (function(d) {
-  function Date() {
-    return new d(3600);
-  }
-  util.inherits(Date, d);
-  Date.now = d.now;
-  return Date;
-})(Date);
-
 describe('gulp-iconfont', function() {
+  var generationTimestamp = 3;
 
   streamtest.versions.forEach(function(version) {
     describe('for ' + version + ' streams', function() {
@@ -32,7 +22,8 @@ describe('gulp-iconfont', function() {
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
             .pipe(iconfont({
               fontName: 'iconsfont',
-              svg: true
+              svg: true,
+              timestamp: generationTimestamp
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
@@ -76,7 +67,8 @@ describe('gulp-iconfont', function() {
           var contents = [];
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: false})
             .pipe(iconfont({
-              fontName: 'iconsfont'
+              fontName: 'iconsfont',
+              timestamp: generationTimestamp
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
@@ -136,7 +128,8 @@ describe('gulp-iconfont', function() {
         it('should work with iconsfont', function(done) {
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})
             .pipe(iconfont({
-              fontName: 'iconsfont'
+              fontName: 'iconsfont',
+              timestamp: generationTimestamp
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
@@ -166,7 +159,8 @@ describe('gulp-iconfont', function() {
           gulp.src(__dirname+'/fixtures/iconsfont/*.svg', {buffer: true})
             .pipe(iconfont({
               fontName: 'iconsfont',
-              spawnWoff2: true
+              spawnWoff2: true,
+              timestamp: generationTimestamp
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
