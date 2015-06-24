@@ -134,6 +134,9 @@ So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2sv
 * options.startUnicode
 * options.appendUnicode
 
+And the [gulp-svg2ttf](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
+* options.timestamp
+
 ## Preparing SVG's
 
 Beware that your SVG icons must have a high enough height. 500 is a minimum. If
