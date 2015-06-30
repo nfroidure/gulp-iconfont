@@ -1,0 +1,7 @@
+{
+	"name": "test",
+	"destination": "./",
+	"ligatures": {
+		"gears": ["gears"]
+	}
+}
