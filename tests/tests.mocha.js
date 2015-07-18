@@ -34,27 +34,27 @@ describe('gulp-iconfont', function() {
                   if(err) {
                     return done(err);
                   }
-                  contents.push(Buffer.concat(chunks).toString('utf-8'));
+                  contents.push(Buffer.concat(chunks));
                   if(contents.length === files.length) {
-                    assert.equal(
+                    assert.deepEqual(
                       contents[0],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.svg', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.svg')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[1],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.ttf', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.ttf')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[2],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[3],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.woff', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[4],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.eot', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.eot')
                     );
                     done();
                   }
@@ -79,23 +79,23 @@ describe('gulp-iconfont', function() {
                   if(err) {
                     return done(err);
                   }
-                  contents.push(Buffer.concat(chunks).toString('utf-8'));
+                  contents.push(Buffer.concat(chunks));
                   if(contents.length === files.length) {
-                    assert.equal(
+                    assert.deepEqual(
                       contents[0],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.ttf', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.ttf')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[1],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff2')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[2],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.woff', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.woff')
                     );
-                    assert.equal(
+                    assert.deepEqual(
                       contents[3],
-                      fs.readFileSync(__dirname + '/expected/iconsfont.eot', 'utf8')
+                      fs.readFileSync(__dirname + '/expected/iconsfont.eot')
                     );
                     done();
                   }
