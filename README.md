@@ -20,7 +20,7 @@ Then, add it to your `gulpfile.js`:
 var iconfont = require('gulp-iconfont');
 
 gulp.task('Iconfont', function(){
-  gulp.src(['assets/icons/*.svg'])
+  return gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
       fontName: 'myfont', // required
       appendUnicode: true // recommended option
@@ -59,7 +59,7 @@ var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
 
 gulp.task('Iconfont', function(){
-  gulp.src(['assets/icons/*.svg'])
+  return gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({ fontName: 'myfont' }))
     .on('glyphs', function(glyphs, options) {
       gulp.src('templates/myfont.css')
