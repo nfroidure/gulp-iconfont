@@ -41,6 +41,11 @@ gulp.task('Iconfont', function(){
   `normalize:true` option and a `fontHeight` greater than 1000
   (`fontHeight: 1001`).
 
+### Known issues
+
+- WOFF2 font seems to cause issues on some setup (see https://github.com/nfroidure/gulp-iconfont/issues/64).
+- the appendUnicode option is broken (see https://github.com/nfroidure/gulp-iconfont/issues/67).
+
 ### Make your CSS
 
 To use this font in your CSS, you could add a mixin like in this
