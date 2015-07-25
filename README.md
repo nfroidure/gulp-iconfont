@@ -126,14 +126,17 @@ Since SVG fonts are deprecated in some browsers, they are disabled per default.
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
  are available:
-* options.fontName
+* options.fontName (required)
+* options.fontWeight
+* options.fontStyle
 * options.fixedWidth
 * options.centerHorizontally
 * options.normalize
 * options.fontHeight
+* options.round
 * options.descent
+* options.metadata
 * options.log
-* options.error
 
 So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
 * options.startUnicode
@@ -192,4 +195,3 @@ Feel free to push your code if you agree with publishing under the MIT license.
 ## Stats
 [![NPM](https://nodei.co/npm/gulp-iconfont.png?downloads=true&stars=true)](https://nodei.co/npm/gulp-iconfont/)
 [![NPM](https://nodei.co/npm-dl/gulp-iconfont.png)](https://nodei.co/npm/gulp-iconfont/)
-
