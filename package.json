@@ -41,7 +41,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-spawn": "^0.3.0",
     "gulp-svg2ttf": "1.1.4",
-    "gulp-svgicons2svgfont": "2.2.2",
+    "gulp-svgicons2svgfont": "2.3.0",
     "gulp-ttf2eot": "1.1.0",
     "gulp-ttf2woff": "1.1.0",
     "gulp-ttf2woff2": "^1.1.1",
