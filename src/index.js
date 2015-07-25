@@ -83,7 +83,7 @@ function gulpFontIcon(options) {
             cmd: '/bin/sh',
             args: [
               '-c',
-              'cat | woff2_compress /dev/stdin /dev/stdout | tee plop.txt | cat',
+              'cat | woff2_compress /dev/stdin /dev/stdout | cat',
             ],
           }))
           .pipe(rename({
