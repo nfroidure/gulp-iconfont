@@ -143,6 +143,53 @@ describe('gulp-iconfont', function() {
             }));
         });
 
+        it('should output SVG font with woff2 added to formats', function(done) {
+          var contents = [];
+          var processedFiles = 0;
+
+          this.timeout(5000);
+          gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
+            .pipe(iconfont({
+              fontName: 'iconsfont',
+              formats: [
+                'ttf',
+                'woff',
+                'woff2',
+              ],
+              timestamp: generationTimestamp,
+            }))
+            .pipe(streamtest[version].toObjects(function(err, files) {
+              if(err) {
+                return done(err);
+              }
+              assert.equal(files.length, 3);
+              files.forEach(function(file, index) {
+                file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
+                  if(err2) {
+                    return done(err2);
+                  }
+                  contents[index] = Buffer.concat(chunks);
+                  processedFiles++;
+                  if(processedFiles === files.length) {
+                    assert.deepEqual(
+                      contents[0],
+                      fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
+                    );
+                    assert.deepEqual(
+                      contents[1],
+                      fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff2'))
+                    );
+                    assert.deepEqual(
+                      contents[2],
+                      fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
+                    );
+                    done();
+                  }
+                }));
+              });
+            }));
+        });
+
       });
 
       describe('in buffer mode', function() {
