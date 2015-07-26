@@ -29,6 +29,7 @@ describe('gulp-iconfont', function() {
               if(err) {
                 return done(err);
               }
+              assert.equal(files.length, 3);
               files.forEach(function(file, index) {
                 file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
                   if(err2) {
@@ -70,6 +71,7 @@ describe('gulp-iconfont', function() {
               if(err) {
                 return done(err);
               }
+              assert.equal(files.length, 1);
               files.forEach(function(file, index) {
                 file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
                   if(err2) {
@@ -109,6 +111,7 @@ describe('gulp-iconfont', function() {
               if(err) {
                 return done(err);
               }
+              assert.equal(files.length, 4);
               files.forEach(function(file, index) {
                 file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
                   if(err2) {
@@ -154,6 +157,7 @@ describe('gulp-iconfont', function() {
               if(err) {
                 return done(err);
               }
+              assert.equal(files.length, 3);
               assert.deepEqual(
                 files[0].contents,
                 fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
@@ -180,10 +184,11 @@ describe('gulp-iconfont', function() {
             })).on('glyphs', function(_codepoints_) {
               codepoints = _codepoints_;
             })
-            .pipe(streamtest[version].toObjects(function(err) {
+            .pipe(streamtest[version].toObjects(function(err, files) {
               if(err) {
                 return done(err);
               }
+              assert.equal(files.length, 3);
               neatequal(codepoints,
                 JSON.parse(fs.readFileSync(
                   path.join(__dirname, 'expected', 'codepoints.json'), 'utf8'))
@@ -200,6 +205,7 @@ describe('gulp-iconfont', function() {
               autohint: true,
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
+              assert.equal(files.length, 3);
               if(err) {
                 return done(err);
               }
