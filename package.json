@@ -39,10 +39,7 @@
     "font"
   ],
   "dependencies": {
-    "gulp-clone": "^1.0.0",
     "gulp-cond": "1.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-spawn": "^0.3.0",
     "gulp-svg2ttf": "1.1.4",
     "gulp-svgicons2svgfont": "2.3.1",
     "gulp-ttf2eot": "1.1.0",
@@ -60,7 +57,6 @@
     "mocha": "~2.2.5",
     "mocha-lcov-reporter": "0.0.2",
     "neatequal": "^1.0.0",
-    "rimraf": "^2.4.2",
     "sf-lint": "^1.0.2",
     "streamtest": "^1.2.1"
   }
