@@ -1,5 +1,5 @@
 # gulp-iconfont
-> Create a SVG/TTF/EOT/WOFF font from several SVG icons with [Gulp](http://gulpjs.com/).
+> Create SVG/TTF/EOT/WOFF/WOFF2 fonts from several SVG icons with [Gulp](http://gulpjs.com/).
 
 [![NPM version](https://badge.fury.io/js/gulp-iconfont.svg)](https://npmjs.org/package/gulp-iconfont) [![Build status](https://secure.travis-ci.org/nfroidure/gulp-iconfont.svg)](https://travis-ci.org/nfroidure/gulp-iconfont) [![Dependency Status](https://david-dm.org/nfroidure/gulp-iconfont.svg)](https://david-dm.org/nfroidure/gulp-iconfont) [![devDependency Status](https://david-dm.org/nfroidure/gulp-iconfont/dev-status.svg)](https://david-dm.org/nfroidure/gulp-iconfont#info=devDependencies) [![Coverage Status](https://coveralls.io/repos/nfroidure/gulp-iconfont/badge.svg?branch=master)](https://coveralls.io/r/nfroidure/gulp-iconfont?branch=master) [![Code Climate](https://codeclimate.com/github/nfroidure/gulp-iconfont.svg)](https://codeclimate.com/github/nfroidure/gulp-iconfont)
 
@@ -18,12 +18,15 @@ Then, add it to your `gulpfile.js`:
 
 ```javascript
 var iconfont = require('gulp-iconfont');
+var runTimestamp = Math.round(Date.now()/1000);
 
 gulp.task('Iconfont', function(){
   return gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
       fontName: 'myfont', // required
-      appendUnicode: true // recommended option
+      appendUnicode: true, // recommended option
+      formats: ['ttf', 'eot', 'woff'], // default, 'woff2' and 'svg' are available
+      timestamp: runTimestamp, // recommended to get consistent builds when watching files
     }))
       .on('glyphs', function(glyphs, options) {
         // CSS templating, e.g.
@@ -40,10 +43,6 @@ gulp.task('Iconfont', function(){
  If some font glyphs aren't converted properly you should append the
   `normalize:true` option and a `fontHeight` greater than 1000
   (`fontHeight: 1001`).
-
-### Known issues
-
-- WOFF2 font seems to cause issues on some setup (see https://github.com/nfroidure/gulp-iconfont/issues/64).
 
 ### Make your CSS
 
@@ -103,7 +102,8 @@ Possible values: `['svg', 'ttf', 'eot', 'woff', 'woff2']`
 Since SVG fonts are deprecated in some (every ?) browsers, they are disabled
  per default.
 
-Also WOFF2 fonts support seems unstable in certain configurations.
+Also the WOFF2 fonts are disabled since it seems to cause issues on some setup
+ (see https://github.com/nfroidure/gulp-iconfont/issues/64).
 
 #### options.autohint
 Type: `Boolean`
