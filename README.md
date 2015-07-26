@@ -44,7 +44,6 @@ gulp.task('Iconfont', function(){
 ### Known issues
 
 - WOFF2 font seems to cause issues on some setup (see https://github.com/nfroidure/gulp-iconfont/issues/64).
-- the appendUnicode option is broken (see https://github.com/nfroidure/gulp-iconfont/issues/67).
 
 ### Make your CSS
 
