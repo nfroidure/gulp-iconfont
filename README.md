@@ -132,7 +132,7 @@ So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2sv
 * options.startUnicode
 * options.appendUnicode
 
-And the [gulp-svg2ttf](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
+And the [gulp-svg2ttf](https://github.com/nfroidure/gulp-svg2ttf#svg2ttfoptions):
 * options.timestamp
 
 ## Preparing SVG's
