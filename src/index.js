@@ -8,6 +8,7 @@ var ttf2woff = require('gulp-ttf2woff');
 var ttf2woff2 = require('gulp-ttf2woff2');
 var cond = require('gulp-cond');
 var filter = require('streamfilter');
+var spawn = require('gulp-spawn');
 
 function gulpFontIcon(options) {
   var inStream = null;
