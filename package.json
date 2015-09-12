@@ -22,13 +22,13 @@
   ],
   "main": "src/index.js",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "scripts": {
     "test": "mocha tests/*.mocha.js",
     "coveralls": "istanbul cover _mocha --report lcovonly -- tests/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "cover": "istanbul cover --report html _mocha -- tests/*.mocha.js -R spec -t 5000",
-    "lint": "eslint **/*.js",
+    "lint": "eslint src/*.js tests/*.js",
     "preversion": "npm run lint && npm test",
     "cli": "env NPM_RUN_CLI=1"
   },
@@ -39,27 +39,26 @@
     "font"
   ],
   "dependencies": {
-    "gulp-cond": "1.0.0",
-    "gulp-svg2ttf": "1.1.4",
-    "gulp-svgicons2svgfont": "2.3.1",
-    "gulp-ttf2eot": "1.1.0",
-    "gulp-ttf2woff": "1.1.0",
-    "gulp-ttf2woff2": "^1.0.0",
+    "gulp-cond": "^1.0.0",
+    "gulp-svg2ttf": "^1.1.4",
+    "gulp-svgicons2svgfont": "^2.4.0",
+    "gulp-ttf2eot": "^1.1.0",
+    "gulp-ttf2woff": "^1.1.0",
+    "gulp-ttf2woff2": "^2.0.0",
     "gulp-spawn": "^0.3.0",
-    "gulp-util": "~3.0.6",
-    "plexer": "0.0.3",
-    "streamfilter": "^1.0.1"
+    "gulp-util": "^3.0.6",
+    "plexer": "^1.0.1",
+    "streamfilter": "^1.0.5"
   },
   "devDependencies": {
-    "coveralls": "~2.11.3",
+    "coveralls": "^2.11.4",
     "eslint": "^1.4.1",
     "eslint-config-simplifield": "^1.1.0",
-    "gulp": "~3.9.0",
-    "istanbul": "~0.3.17",
-    "mocha": "~2.2.5",
-    "mocha-lcov-reporter": "0.0.2",
+    "gulp": "^3.9.0",
+    "istanbul": "^0.3.19",
+    "mocha": "^2.3.2",
+    "mocha-lcov-reporter": "^0.0.2",
     "neatequal": "^1.0.0",
-    "sf-lint": "^1.0.2",
     "streamtest": "^1.2.1"
   }
 }
