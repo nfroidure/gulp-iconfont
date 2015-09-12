@@ -25,11 +25,11 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha tests/*.mocha.js",
-    "coveralls": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- tests/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "cover": "./node_modules/istanbul/lib/cli.js cover --report html ./node_modules/mocha/bin/_mocha -- tests/*.mocha.js -R spec -t 5000",
+    "test": "mocha tests/*.mocha.js",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- tests/*.mocha.js -R spec -t 5000 && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "istanbul cover --report html _mocha -- tests/*.mocha.js -R spec -t 5000",
     "lint": "eslint **/*.js",
-    "lintconfig": "sf-lint-sync",
+    "preversion": "npm run lint && npm test",
     "cli": "env NPM_RUN_CLI=1"
   },
   "keywords": [
@@ -52,7 +52,8 @@
   },
   "devDependencies": {
     "coveralls": "~2.11.3",
-    "eslint": "^0.24.1",
+    "eslint": "^1.4.1",
+    "eslint-config-simplifield": "^1.1.0",
     "gulp": "~3.9.0",
     "istanbul": "~0.3.17",
     "mocha": "~2.2.5",

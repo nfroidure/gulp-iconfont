@@ -1,3 +1,5 @@
+/* eslint max-nested-callbacks:[1] */
+
 'use strict';
 
 var fs = require('fs');
@@ -50,7 +52,7 @@ describe('gulp-iconfont', function() {
                       contents[2],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
                     );
-                    done();
+                    return done();
                   }
                 }));
               });
@@ -84,7 +86,7 @@ describe('gulp-iconfont', function() {
                       contents[0],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
                     );
-                    done();
+                    return done();
                   }
                 }));
               });
@@ -136,7 +138,7 @@ describe('gulp-iconfont', function() {
                       contents[3],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
                     );
-                    done();
+                    return done();
                   }
                 }));
               });
@@ -183,7 +185,7 @@ describe('gulp-iconfont', function() {
                       contents[2],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
                     );
-                    done();
+                    return done();
                   }
                 }));
               });
