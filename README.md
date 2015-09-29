@@ -131,6 +131,7 @@ The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2sv
 So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
 * options.startUnicode
 * options.appendUnicode
+* options.metadataProvider
 
 And the [gulp-svg2ttf](https://github.com/nfroidure/gulp-svg2ttf#svg2ttfoptions):
 * options.timestamp
