@@ -18,6 +18,7 @@ function gulpFontIcon(options) {
   options = options || {};
   options.autohint = !!options.autohint;
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
+  options.metadataProvider = options.metadataProvider;
   // Generating SVG font and saving her
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
