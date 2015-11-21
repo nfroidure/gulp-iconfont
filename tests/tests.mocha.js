@@ -145,7 +145,7 @@ describe('gulp-iconfont', function() {
             }));
         });
 
-        it('should output SVG font with woff2 added to formats', function(done) {
+        it('should output WOFF2 font with woff2 added to formats', function(done) {
           var contents = [];
           var processedFiles = 0;
 
