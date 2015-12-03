@@ -82,7 +82,7 @@ gulp.task('Iconfont', function(){
 
 Add issues to the right repos:
 * the plugin doesn't work at all, submit your issue in this repo.
-* every fonts doens't display as expected: submit the issue to the
+* every font doesn't display as expected: submit the issue to the
  [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont) repository.
 * only some fonts are damaged? Please look at the font format the targeted
  browser actually use and then, submit your issue to one of those projects:
