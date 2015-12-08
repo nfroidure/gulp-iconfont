@@ -30,7 +30,7 @@ fonts.forEach(function(font) {
 			appendCodepoints: true, // recommended option
 			fontHeight: info.fontHeight,
 			normalize: !!info.normalize,
-			svg: true,
+			formats: ['svg', 'ttf', 'eot', 'woff', 'woff2'],
 			round: 100,
 			metadataProvider: metadataProvider
 		}))
