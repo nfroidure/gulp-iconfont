@@ -15,4 +15,5 @@ script:
   - git submodule update
   - make clean all
   - cd ..
+  - npm i gulp-ttf2woff2
   - env PATH=$PATH:$(pwd)/woff2 npm test

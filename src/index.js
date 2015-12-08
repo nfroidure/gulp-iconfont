@@ -5,10 +5,14 @@ var svgicons2svgfont = require('gulp-svgicons2svgfont');
 var svg2ttf = require('gulp-svg2ttf');
 var ttf2eot = require('gulp-ttf2eot');
 var ttf2woff = require('gulp-ttf2woff');
-var ttf2woff2 = require('gulp-ttf2woff2');
+var ttf2woff2;
 var cond = require('gulp-cond');
 var filter = require('streamfilter');
 var spawn = require('gulp-spawn');
+
+try {
+  ttf2woff2 = require('gulp-ttf2woff2');
+} catch(err) {} // eslint-disable-line
 
 function gulpFontIcon(options) {
   var inStream = null;
@@ -18,6 +22,11 @@ function gulpFontIcon(options) {
   options = options || {};
   options.autohint = !!options.autohint;
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
+
+  if(-1 !== options.formats.indexOf('woff2') && !ttf2woff2) {
+    throw new Error('The woff2 format is an optionnal dependency,' +
+      ' please install gulp-ttf2woff2 to use it.');
+  }
   // Generating SVG font and saving her
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her

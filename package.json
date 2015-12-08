@@ -39,11 +39,13 @@
     "gulp-svgicons2svgfont": "^2.4.0",
     "gulp-ttf2eot": "^1.1.1",
     "gulp-ttf2woff": "^1.1.0",
-    "gulp-ttf2woff2": "^2.0.2",
     "gulp-spawn": "^0.3.0",
     "gulp-util": "^3.0.7",
     "plexer": "^1.0.1",
     "streamfilter": "^1.0.5"
+  },
+  "optionnalDependencies": {
+    "gulp-ttf2woff2": "^2.0.2"
   },
   "devDependencies": {
     "coveralls": "^2.11.4",
