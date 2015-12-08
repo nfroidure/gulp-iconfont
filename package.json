@@ -1,0 +1,25 @@
+{
+  "name": "gulp-iconfont-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-iconfont": "^5.0.1",
+    "svgicons2svgfont": "^3.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "cli": "env NPM_RUN_CLI=1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sabberworm/gulp-iconfont.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sabberworm/gulp-iconfont/issues"
+  },
+  "homepage": "https://github.com/sabberworm/gulp-iconfont#readme"
+}
