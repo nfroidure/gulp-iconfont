@@ -57,24 +57,35 @@ It's also easy to make a CSS template by yourself. Like
  [such a template](https://github.com/cognitom/symbols-for-sketch/blob/master/templates/fontawesome-style.css). The template is outdated, **change** every occurrence of `glyph.codepoint.toString(16).toUpperCase()` to `glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase()`, otherwise it will not work.
 
 ```javascript
+var async = require('async');
 var gulp = require('gulp');
 var iconfont = require('gulp-iconfont');
 var consolidate = require('gulp-consolidate');
 
-gulp.task('Iconfont', function(){
-  return gulp.src(['assets/icons/*.svg'])
-    .pipe(iconfont({ fontName: 'myfont' }))
-    .on('glyphs', function(glyphs, options) {
-      gulp.src('templates/myfont.css')
-        .pipe(consolidate('lodash', {
-          glyphs: glyphs,
-          fontName: 'myfont',
-          fontPath: '../fonts/',
-          className: 's'
-        }))
-        .pipe(gulp.dest('www/css/'));
-    })
-    .pipe(gulp.dest('www/fonts/'));
+gulp.task('Iconfont', function(done){
+  var iconStream = gulp.src(['assets/icons/*.svg'])
+    .pipe(iconfont({ fontName: 'myfont' }));
+
+  async.parallel([
+    function handleGlyphs (cb) {
+      iconStream.on('glyphs', function(glyphs, options) {
+        gulp.src('templates/myfont.css')
+          .pipe(consolidate('lodash', {
+            glyphs: glyphs,
+            fontName: 'myfont',
+            fontPath: '../fonts/',
+            className: 's'
+          }))
+          .pipe(gulp.dest('www/css/'))
+          .on('finish', cb);
+      });
+    },
+    function handleFonts (cb) {
+      iconStream
+        .pipe(gulp.dest('www/fonts/'))
+        .on('finish', cb);
+    }
+  ], done);
 });
 ```
 
