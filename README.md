@@ -24,7 +24,7 @@ gulp.task('Iconfont', function(){
   return gulp.src(['assets/icons/*.svg'])
     .pipe(iconfont({
       fontName: 'myfont', // required
-      appendUnicode: true, // recommended option
+      prependUnicode: true, // recommended option
       formats: ['ttf', 'eot', 'woff'], // default, 'woff2' and 'svg' are available
       timestamp: runTimestamp, // recommended to get consistent builds when watching files
     }))
@@ -40,7 +40,7 @@ gulp.task('Iconfont', function(){
  (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`)
  for more flexibility, feel free to use them separately.
 
- If some font glyphs aren't converted properly you should append the
+ If some font glyphs aren't converted properly you should add the
   `normalize:true` option and a `fontHeight` greater than 1000
   (`fontHeight: 1001`).
 
@@ -130,7 +130,7 @@ The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2sv
 
 So are the [gulp-svgicons2svgfont](https://github.com/nfroidure/gulp-svgicons2svgfont#svgicons2svgfontoptions):
 * options.startUnicode
-* options.appendUnicode
+* options.prependUnicode
 
 And the [gulp-svg2ttf](https://github.com/nfroidure/gulp-svg2ttf#svg2ttfoptions):
 * options.timestamp
