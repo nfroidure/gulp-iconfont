@@ -40,7 +40,7 @@ gulp.task('Iconfont', function(){
  (`gulp-svgicons2svgfont`, `gulp-svg2tff`, `gulp-ttf2eot`, `gulp-ttf2woff`)
  for more flexibility, feel free to use them separately.
 
- If some font glyphs aren't converted properly you should add the
+ **If some font glyphs aren't converted properly** you should add the
   `normalize:true` option and a `fontHeight` greater than 1000
   (`fontHeight: 1001`).
 
