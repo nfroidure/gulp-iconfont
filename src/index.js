@@ -42,11 +42,11 @@ function gulpFontIcon(options) {
         { objectMode: true },
         nonTTFfilter,
         nonTTFfilter.pipe(spawn({
-          cmd: '/bin/sh',
+          cmd: 'ttfautohint',
           args: [
-            '-c',
-            'cat | ttfautohint --symbol --fallback-script=latn' +
-              ' --windows-compatibility --no-info /dev/stdin /dev/stdout | cat',
+            '--symbol',
+            '--default-script=none',
+            '--no-info'
           ],
         })).pipe(nonTTFfilter.restore)
       ).on('error', function(err) {
