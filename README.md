@@ -6,6 +6,16 @@
 You can test this library with the
  [frontend generator](http://nfroidure.github.io/svgiconfont/).
 
+**Warning:** While this plugin may still be useful for fonts generation or old browser
+ support, you should consider using SVG icons directly. Indeed, when i created
+ `gulp-iconfont` and all its related modules, using SVG icons was just not realistic
+ for a wide browser suppport but i was already conviced that SVG was the
+ future, that's why i wanted my SVG source files to sit separated in a folder.
+ So, now, just enjoy switching to SVG with almost no effort :). Was a great
+ open source journey with you all!
+ 
+[More info on with using SVG over icon fonts](https://sarasoueidan.com/blog/icon-fonts-to-svg/).
+
 ## Usage
 
 First, install `gulp-iconfont` as a development dependency:
