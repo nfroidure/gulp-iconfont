@@ -261,16 +261,27 @@ describe('gulp-iconfont', function() {
               var contents = files[0].contents;
               var expected = fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
               // Clear the flags that change between invocations
+              // Clear checksums
+              contents.writeUInt8(0, 0x0080);
+              expected.writeUInt8(0, 0x0080);
+              contents.writeUInt8(0, 0x0081);
+              expected.writeUInt8(0, 0x0081);
               contents.writeUInt8(0, 0x0082);
               expected.writeUInt8(0, 0x0082);
               contents.writeUInt8(0, 0x0083);
               expected.writeUInt8(0, 0x0083);
+
+              contents.writeUInt8(0, 0x714);
+              expected.writeUInt8(0, 0x714);
               contents.writeUInt8(0, 0x715);
               expected.writeUInt8(0, 0x715);
               contents.writeUInt8(0, 0x716);
               expected.writeUInt8(0, 0x716);
               contents.writeUInt8(0, 0x717);
               expected.writeUInt8(0, 0x717);
+
+              contents.writeUInt8(0, 0x72C);
+              expected.writeUInt8(0, 0x72C);
               contents.writeUInt8(0, 0x72D);
               expected.writeUInt8(0, 0x72D);
               contents.writeUInt8(0, 0x72E);
