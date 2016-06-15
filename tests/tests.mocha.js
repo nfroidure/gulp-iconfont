@@ -245,7 +245,7 @@ describe('gulp-iconfont', function() {
               done();
             }));
         });
-        it.only('should work with autohinted iconsfont', function(done) {
+        it('should work with autohinted iconsfont', function(done) {
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
