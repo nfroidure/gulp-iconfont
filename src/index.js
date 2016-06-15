@@ -16,7 +16,6 @@ function gulpFontIcon(options) {
   var duplexStream = null;
 
   options = options || {};
-  options.autohint = !!options.autohint;
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
   // Generating SVG font and saving her
   inStream = svgicons2svgfont(options);
@@ -29,7 +28,8 @@ function gulpFontIcon(options) {
       outStream.emit('error', err);
     }))
   // TTFAutoHint
-    .pipe(cond(options.autohint, function() {
+    .pipe(cond(!!options.autohint, function() {
+      var hintPath = typeof options.autohint === 'string' ? options.autohint : 'ttfautohint';
       var nonTTFfilter = filter(function(file, unused, cb) {
         cb(file.path.indexOf('.ttf') !== file.path.length - 4);
       }, {
@@ -45,7 +45,7 @@ function gulpFontIcon(options) {
           cmd: '/bin/sh',
           args: [
             '-c',
-            'cat | ttfautohint --symbol --fallback-script=latn' +
+            'cat | "'+hintPath+'" --symbol --fallback-script=latn' +
               ' --windows-compatibility --no-info /dev/stdin /dev/stdout | cat',
           ],
         })).pipe(nonTTFfilter.restore)
