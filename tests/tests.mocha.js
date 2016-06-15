@@ -245,35 +245,45 @@ describe('gulp-iconfont', function() {
               done();
             }));
         });
-    /* Unable to make it work locally
         it.only('should work with autohinted iconsfont', function(done) {
-          gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg', { buffer: true })
+          gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
-              autohint: true,
+              autohint: __dirname + '/ttfautohint/ttfautohint.sh',
+              formats: ['ttf']
             }))
             .pipe(streamtest[version].toObjects(function(err, files) {
-              assert.equal(files.length, 3);
+              assert.equal(files.length, 1);
               if(err) {
                 return done(err);
               }
+              var contents = files[0].contents;
+              var expected = fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
+              // Clear the flags that change between invocations
+              contents.writeUInt8(0, 0x0082);
+              expected.writeUInt8(0, 0x0082);
+              contents.writeUInt8(0, 0x0083);
+              expected.writeUInt8(0, 0x0083);
+              contents.writeUInt8(0, 0x715);
+              expected.writeUInt8(0, 0x715);
+              contents.writeUInt8(0, 0x716);
+              expected.writeUInt8(0, 0x716);
+              contents.writeUInt8(0, 0x717);
+              expected.writeUInt8(0, 0x717);
+              contents.writeUInt8(0, 0x72D);
+              expected.writeUInt8(0, 0x72D);
+              contents.writeUInt8(0, 0x72E);
+              expected.writeUInt8(0, 0x72E);
+              contents.writeUInt8(0, 0x72F);
+              expected.writeUInt8(0, 0x72F);
               assert.deepEqual(
-                files[0].contents,
-                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.ttf'))
-              );
-              assert.deepEqual(
-                files[1].contents,
-                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
-              );
-              assert.deepEqual(
-                files[2].contents,
-                fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
+                contents,
+                expected
               );
               done();
             }));
         });
-    */
 
       });
     });
