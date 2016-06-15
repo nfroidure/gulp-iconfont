@@ -40,5 +40,7 @@ before_install:
   - tar xzf ttfautohint-1.5.tar.gz \
   - (cd ttfautohint-1.5 && ./configure --prefix="$ROOT_DIR" && make install)
   - popd
+  - export PATH="$PATH:$ROOT_DIR/bin"
+  - export LD_LIBRARY_PATH="$ROOT_DIR/lib:$LD_LIBRARY_PATH"
 
 script: npm test
