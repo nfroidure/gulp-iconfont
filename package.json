@@ -25,7 +25,8 @@
     "cover": "istanbul cover --report html _mocha -- tests/*.mocha.js -R spec -t 5000",
     "lint": "eslint src/*.js tests/*.js",
     "preversion": "npm run lint && npm test",
-    "cli": "env NPM_RUN_CLI=1"
+    "cli": "env NPM_RUN_CLI=1",
+    "generate-fixtures": "./tests/generate-fixtures.sh"
   },
   "keywords": [
     "gulpplugin",

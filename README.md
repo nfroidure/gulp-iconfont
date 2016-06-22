@@ -127,12 +127,15 @@ Also the WOFF2 fonts are disabled since it seems to cause issues on some setup
  (see https://github.com/nfroidure/gulp-iconfont/issues/64).
 
 #### options.autohint
-Type: `Boolean`
+Type: `Boolean|String`
 Default value: `false`
 
 If [ttfautohint](http://www.freetype.org/ttfautohint/) is installed on your
  system, you may want to auto hint your fonts. Beware that this is an
  experimental and untested feature (beware to use at least the 0.93 version).
+ 
+If the value is a string, it is taken to be the path to the `ttfautohint` binary.
+ Otherwise, `ttfautohint` is searched in $PATH.
 
 #### options.*
 The [svgicons2svgfont](https://github.com/nfroidure/svgicons2svgfont#svgicons2svgfontoptions)
