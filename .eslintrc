@@ -1,21 +1,10 @@
 {
-  "extends": "eslint-config-simplifield",
-  "env": {
-    "node": true,
-    "mocha": true
+  extends: 'eslint-config-simplifield/lib/backend',
+  parserOptions: {
+    sourceType: 'script',
+    modules: true,
   },
-  "globals": {
-    "require": false,
-    "describe": false,
-    "beforeEach": false,
-    "afterEach": false,
-    "before": false,
-    "after": false,
-    "it": false,
-    "sinon": false,
-    "module": false
+  rules: {
+    'no-magic-numbers': 0,
   },
-  "rules": {
-    "strict": [2, "global"]
-  }
 }

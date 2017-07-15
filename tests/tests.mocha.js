@@ -1,41 +1,43 @@
-/* eslint max-nested-callbacks:[1] */
+/* eslint max-nested-callbacks:0, security/detect-non-literal-fs-filename:0 */
 
 'use strict';
 
-var fs = require('fs');
-var path = require('path');
-var gulp = require('gulp');
-var iconfont = require('../src/index');
-var assert = require('assert');
-var neatequal = require('neatequal');
-var streamtest = require('streamtest');
+const fs = require('fs');
+const path = require('path');
+const gulp = require('gulp');
+const iconfont = require('../src/index');
+const assert = require('assert');
+const neatequal = require('neatequal');
+const streamtest = require('streamtest');
 
-describe('gulp-iconfont', function() {
-  var generationTimestamp = 3;
+describe('gulp-iconfont', () => {
+  const generationTimestamp = 3;
 
-  streamtest.versions.forEach(function(version) {
-    describe('for ' + version + ' streams', function() {
+  streamtest.versions.forEach((version) => {
+    describe(`for ${version} streams`, () => {
 
-      describe('in stream mode', function() {
+      describe('in stream mode', () => {
 
-        it('should work', function(done) {
-          var contents = [];
-          var processedFiles = 0;
+        it('should work', (done) => {
+          const contents = [];
+          let processedFiles = 0;
 
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 3);
-              files.forEach(function(file, index) {
-                file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
+              files.forEach((file, index) => {
+                file.contents.pipe(streamtest[version].toChunks((err2, chunks) => {
                   if(err2) {
-                    return done(err2);
+                    done(err2);
+                    return;
                   }
                   contents[index] = Buffer.concat(chunks);
                   processedFiles++;
@@ -52,16 +54,16 @@ describe('gulp-iconfont', function() {
                       contents[2],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
                     );
-                    return done();
+                    done(); // eslint-disable-line
                   }
                 }));
               });
             }));
         });
 
-        it('should work for only one font', function(done) {
-          var contents = [];
-          var processedFiles = 0;
+        it('should work for only one font', (done) => {
+          const contents = [];
+          let processedFiles = 0;
 
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
             .pipe(iconfont({
@@ -69,15 +71,17 @@ describe('gulp-iconfont', function() {
               timestamp: generationTimestamp,
               formats: ['woff'],
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 1);
-              files.forEach(function(file, index) {
-                file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
+              files.forEach((file, index) => {
+                file.contents.pipe(streamtest[version].toChunks((err2, chunks) => {
                   if(err2) {
-                    return done(err2);
+                    done(err2);
+                    return;
                   }
                   contents[index] = Buffer.concat(chunks);
                   processedFiles++;
@@ -86,7 +90,7 @@ describe('gulp-iconfont', function() {
                       contents[0],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
                     );
-                    return done();
+                    done(); // eslint-disable-line
                   }
                 }));
               });
@@ -94,8 +98,8 @@ describe('gulp-iconfont', function() {
         });
 
         it('should output SVG font with svg added to formats', function(done) {
-          var contents = [];
-          var processedFiles = 0;
+          const contents = [];
+          let processedFiles = 0;
 
           this.timeout(5000);
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
@@ -109,15 +113,17 @@ describe('gulp-iconfont', function() {
               ],
               timestamp: generationTimestamp,
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 4);
-              files.forEach(function(file, index) {
-                file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
+              files.forEach((file, index) => {
+                file.contents.pipe(streamtest[version].toChunks((err2, chunks) => {
                   if(err2) {
-                    return done(err2);
+                    done(err2);
+                    return;
                   }
                   contents[index] = Buffer.concat(chunks);
                   processedFiles++;
@@ -138,7 +144,7 @@ describe('gulp-iconfont', function() {
                       contents[3],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.eot'))
                     );
-                    return done();
+                    done(); // eslint-disable-line
                   }
                 }));
               });
@@ -146,8 +152,8 @@ describe('gulp-iconfont', function() {
         });
 
         it('should output WOFF2 font with woff2 added to formats', function(done) {
-          var contents = [];
-          var processedFiles = 0;
+          const contents = [];
+          let processedFiles = 0;
 
           this.timeout(5000);
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: false })
@@ -160,15 +166,17 @@ describe('gulp-iconfont', function() {
               ],
               timestamp: generationTimestamp,
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 3);
-              files.forEach(function(file, index) {
-                file.contents.pipe(streamtest[version].toChunks(function(err2, chunks) {
+              files.forEach((file, index) => {
+                file.contents.pipe(streamtest[version].toChunks((err2, chunks) => {
                   if(err2) {
-                    return done(err2);
+                    done(err2);
+                    return;
                   }
                   contents[index] = Buffer.concat(chunks);
                   processedFiles++;
@@ -185,7 +193,7 @@ describe('gulp-iconfont', function() {
                       contents[2],
                       fs.readFileSync(path.join(__dirname, 'expected', 'iconsfont.woff'))
                     );
-                    return done();
+                    done(); // eslint-disable-line
                   }
                 }));
               });
@@ -194,17 +202,18 @@ describe('gulp-iconfont', function() {
 
       });
 
-      describe('in buffer mode', function() {
+      describe('in buffer mode', () => {
 
-        it('should work', function(done) {
+        it('should work', (done) => {
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 3);
               assert.deepEqual(
@@ -223,19 +232,20 @@ describe('gulp-iconfont', function() {
             }));
         });
 
-        it('should emit an event with the codepoint mapping', function(done) {
-          var codepoints;
+        it('should emit an event with the codepoint mapping', (done) => {
+          let codepoints;
 
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
-            })).on('glyphs', function(_codepoints_) {
+            })).on('glyphs', (_codepoints_) => {
               codepoints = _codepoints_;
             })
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
               assert.equal(files.length, 3);
               neatequal(codepoints,
@@ -245,23 +255,25 @@ describe('gulp-iconfont', function() {
               done();
             }));
         });
-        it('should work with autohinted iconsfont', function(done) {
+        it('should work with autohinted iconsfont', (done) => {
           gulp.src(path.join(__dirname, 'fixtures', 'iconsfont', '*.svg'), { buffer: true })
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
-              autohint: __dirname + '/ttfautohint/ttfautohint.sh',
-              formats: ['ttf']
+              autohint: `${__dirname}/ttfautohint/ttfautohint.sh`,
+              formats: ['ttf'],
             }))
-            .pipe(streamtest[version].toObjects(function(err, files) {
+            .pipe(streamtest[version].toObjects((err, files) => {
               assert.equal(files.length, 1);
               if(err) {
-                return done(err);
+                done(err);
+                return;
               }
-              var contents = files[0].contents;
-              var expected = fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
+              const contents = files[0].contents;
+              const expected = fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
               // Clear the flags that change between invocations
               // Clear checksums
+
               contents.writeUInt8(0, 0x0080);
               expected.writeUInt8(0, 0x0080);
               contents.writeUInt8(0, 0x0081);

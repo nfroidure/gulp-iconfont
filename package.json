@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "gulp-cond": "^1.0.0",
-    "gulp-spawn": "^0.3.0",
+    "gulp-spawn": "^0.4.0",
     "gulp-svg2ttf": "^2.0.0",
     "gulp-svgicons2svgfont": "^3.0.1",
     "gulp-ttf2eot": "^1.1.1",
@@ -48,11 +48,11 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.6",
-    "eslint": "^1.10.1",
-    "eslint-config-simplifield": "^1.2.2",
+    "eslint": "^4.2.0",
+    "eslint-config-simplifield": "^6.0.0",
     "gulp": "^3.9.1",
     "istanbul": "^0.4.2",
-    "mocha": "^2.4.5",
+    "mocha": "^3.4.2",
     "mocha-lcov-reporter": "^1.0.0",
     "neatequal": "^1.0.0",
     "streamtest": "^1.2.1"
