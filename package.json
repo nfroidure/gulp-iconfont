@@ -17,7 +17,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6.11.1"
   },
   "scripts": {
     "test": "mocha tests/*.mocha.js",
