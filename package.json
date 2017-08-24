@@ -38,7 +38,7 @@
     "gulp-cond": "^1.0.0",
     "gulp-spawn": "^0.4.0",
     "gulp-svg2ttf": "^2.0.0",
-    "gulp-svgicons2svgfont": "^3.0.1",
+    "gulp-svgicons2svgfont": "^4.0.1",
     "gulp-ttf2eot": "^1.1.1",
     "gulp-ttf2woff": "^1.1.0",
     "gulp-ttf2woff2": "^2.0.2",
