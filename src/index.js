@@ -5,7 +5,6 @@ const svgicons2svgfont = require('gulp-svgicons2svgfont');
 const svg2ttf = require('gulp-svg2ttf');
 const ttf2eot = require('gulp-ttf2eot');
 const ttf2woff = require('gulp-ttf2woff');
-const ttf2woff2 = require('gulp-ttf2woff2');
 const cond = require('gulp-cond');
 const filter = require('streamfilter');
 const spawn = require('gulp-spawn');
@@ -64,13 +63,6 @@ function gulpFontIcon(options) {
     .pipe(cond(
       -1 !== options.formats.indexOf('woff'),
       () => ttf2woff({ clone: true }).on('error', (err) => {
-        outStream.emit('error', err);
-      })
-    ))
-    // Generating WOFF2 font
-    .pipe(cond(
-      -1 !== options.formats.indexOf('woff2'),
-      () => ttf2woff2({ clone: true }).on('error', (err) => {
         outStream.emit('error', err);
       })
     ))
