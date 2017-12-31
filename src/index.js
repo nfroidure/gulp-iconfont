@@ -1,18 +1,15 @@
 'use strict';
 
-const duplexer = require('plexer');
-const svgicons2svgfont = require('gulp-svgicons2svgfont');
-const svg2ttf = require('gulp-svg2ttf');
-const ttf2eot = require('gulp-ttf2eot');
-const ttf2woff = require('gulp-ttf2woff');
-const cond = require('gulp-cond');
-const filter = require('streamfilter');
-const spawn = require('gulp-spawn');
+const duplexer = require('plexer'),
+      svgicons2svgfont = require('gulp-svgicons2svgfont'),
+      cond = require('gulp-cond'),
+      filter = require('streamfilter'),
+      spawn = require('gulp-spawn');
 
 function gulpFontIcon(options) {
-  let inStream = null;
-  let outStream = null;
-  let duplexStream = null;
+  let inStream = null,
+      outStream = null,
+      duplexStream = null;
 
   options = options || {};
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
@@ -20,7 +17,7 @@ function gulpFontIcon(options) {
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
   outStream = inStream
-    .pipe(svg2ttf({
+    .pipe(require('gulp-svg2ttf')({
       clone: -1 !== options.formats.indexOf('svg'),
       timestamp: options.timestamp,
     }).on('error', (err) => {
@@ -55,14 +52,14 @@ function gulpFontIcon(options) {
     // Generating EOT font
     .pipe(cond(
       -1 !== options.formats.indexOf('eot'),
-      () => ttf2eot({ clone: true }).on('error', (err) => {
+      () => require('gulp-ttf2eot')({ clone: true }).on('error', (err) => {
         outStream.emit('error', err);
       })
     ))
     // Generating WOFF font
     .pipe(cond(
       -1 !== options.formats.indexOf('woff'),
-      () => ttf2woff({ clone: true }).on('error', (err) => {
+      () => require('gulp-ttf2woff')({ clone: true }).on('error', (err) => {
         outStream.emit('error', err);
       })
     ))
