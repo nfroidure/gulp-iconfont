@@ -63,6 +63,13 @@ function gulpFontIcon(options) {
         outStream.emit('error', err);
       })
     ))
+    // Generating WOFF2 font
+    .pipe(cond(
+      -1 !== options.formats.indexOf('woff2'),
+      () => require('gulp-ttf2woff2')({ clone: true }).on('error', (err) => {
+        outStream.emit('error', err);
+      })
+    ))
     // Filter TTF font if necessary
     .pipe(cond(
       -1 === options.formats.indexOf('ttf'),
