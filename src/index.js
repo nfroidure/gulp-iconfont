@@ -1,15 +1,15 @@
 'use strict';
 
-const duplexer = require('plexer'),
-      svgicons2svgfont = require('gulp-svgicons2svgfont'),
-      cond = require('gulp-cond'),
-      filter = require('streamfilter'),
-      spawn = require('gulp-spawn');
+const duplexer = require('plexer');
+const svgicons2svgfont = require('gulp-svgicons2svgfont');
+const cond = require('gulp-cond');
+const filter = require('streamfilter');
+const spawn = require('gulp-spawn');
 
 function gulpFontIcon(options) {
-  let inStream = null,
-      outStream = null,
-      duplexStream = null;
+  let inStream = null;
+  let outStream = null;
+  let duplexStream = null;
 
   options = options || {};
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
