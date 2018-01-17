@@ -6,5 +6,6 @@
   },
   rules: {
     'no-magic-numbers': 0,
+    'global-require': 0,
   },
 }
