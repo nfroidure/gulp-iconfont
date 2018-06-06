@@ -239,7 +239,8 @@ describe('gulp-iconfont', () => {
             .pipe(iconfont({
               fontName: 'iconsfont',
               timestamp: generationTimestamp,
-            })).on('glyphs', (_codepoints_) => {
+            }))
+            .on('glyphs', (_codepoints_) => {
               codepoints = _codepoints_;
             })
             .pipe(streamtest[version].toObjects((err, files) => {
@@ -270,7 +271,8 @@ describe('gulp-iconfont', () => {
                 return;
               }
               const contents = files[0].contents;
-              const expected = fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
+              const expected =
+                fs.readFileSync(path.join(__dirname, 'expected', 'hinted', 'iconsfont.ttf'));
               // Clear the flags that change between invocations
               // Clear checksums
 

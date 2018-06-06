@@ -13,14 +13,13 @@ function gulpFontIcon(options) {
 
   options = options || {};
   options.formats = options.formats || ['ttf', 'eot', 'woff'];
+  options.clone = -1 !== options.formats.indexOf('svg');
+  options.timestamp = options.timestamp || Math.round(Date.now() / 1000);
   // Generating SVG font and saving her
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
   outStream = inStream
-    .pipe(require('gulp-svg2ttf')({
-      clone: -1 !== options.formats.indexOf('svg'),
-      timestamp: options.timestamp,
-    }).on('error', (err) => {
+    .pipe(require('gulp-svg2ttf')(options).on('error', (err) => {
       outStream.emit('error', err);
     }))
     // TTFAutoHint
