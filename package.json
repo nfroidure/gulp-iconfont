@@ -42,18 +42,18 @@
     "gulp-ttf2eot": "^1.1.1",
     "gulp-ttf2woff": "^1.1.0",
     "gulp-ttf2woff2": "^2.0.2",
-    "plexer": "^1.0.1",
-    "streamfilter": "^1.0.5"
+    "plexer": "^1.0.2",
+    "streamfilter": "^1.0.7"
   },
   "devDependencies": {
-    "coveralls": "^2.11.6",
-    "eslint": "^4.2.0",
-    "eslint-config-simplifield": "^6.0.0",
-    "gulp": "^3.9.1",
+    "coveralls": "^3.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-simplifield": "^7.1.0",
+    "gulp": "^4.0.0",
     "istanbul": "^0.4.2",
-    "mocha": "^3.4.2",
+    "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.0.0",
     "neatequal": "^1.0.0",
-    "streamtest": "^1.2.1"
+    "streamtest": "^1.2.3"
   }
 }

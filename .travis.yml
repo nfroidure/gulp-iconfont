@@ -4,6 +4,7 @@ node_js:
   - 6
   - node
   - lts/*
+  - 9.10.1
 
 sudo: false
 
