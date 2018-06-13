@@ -19,7 +19,7 @@ function gulpFontIcon(options) {
   inStream = svgicons2svgfont(options);
   // Generating TTF font and saving her
   outStream = inStream
-    .pipe(require('gulp-svg2ttf')(options).on('error', (err) => {
+    .pipe(require('gulp-svg2ttf')(options).on('error', err => {
       outStream.emit('error', err);
     }))
     // TTFAutoHint
@@ -44,28 +44,28 @@ function gulpFontIcon(options) {
               ' --windows-compatibility --no-info /dev/stdin /dev/stdout | cat',
           ],
         })).pipe(nonTTFfilter.restore)
-      ).on('error', (err) => {
+      ).on('error', err => {
         outStream.emit('error', err);
       });
     }))
     // Generating EOT font
     .pipe(cond(
       -1 !== options.formats.indexOf('eot'),
-      () => require('gulp-ttf2eot')({ clone: true }).on('error', (err) => {
+      () => require('gulp-ttf2eot')({ clone: true }).on('error', err => {
         outStream.emit('error', err);
       })
     ))
     // Generating WOFF font
     .pipe(cond(
       -1 !== options.formats.indexOf('woff'),
-      () => require('gulp-ttf2woff')({ clone: true }).on('error', (err) => {
+      () => require('gulp-ttf2woff')({ clone: true }).on('error', err => {
         outStream.emit('error', err);
       })
     ))
     // Generating WOFF2 font
     .pipe(cond(
       -1 !== options.formats.indexOf('woff2'),
-      () => require('gulp-ttf2woff2')({ clone: true }).on('error', (err) => {
+      () => require('gulp-ttf2woff2')({ clone: true }).on('error', err => {
         outStream.emit('error', err);
       })
     ))
@@ -83,7 +83,7 @@ function gulpFontIcon(options) {
   duplexStream = duplexer({ objectMode: true }, inStream, outStream);
 
   // Re-emit codepoint mapping event
-  inStream.on('glyphs', (glyphs) => {
+  inStream.on('glyphs', glyphs => {
     duplexStream.emit('glyphs', glyphs, options);
   });
 
