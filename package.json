@@ -35,7 +35,7 @@
     "font"
   ],
   "dependencies": {
-    "gulp-spawn": "^0.4.0",
+    "gulp-spawn": "^0.4.4",
     "gulp-svg2ttf": "^2.0.0",
     "gulp-svgicons2svgfont": "^5.0.1",
     "gulp-ttf2eot": "^1.1.1",
@@ -45,9 +45,9 @@
     "streamfilter": "^1.0.7"
   },
   "devDependencies": {
-    "coveralls": "^3.0.1",
-    "eslint": "^4.19.1",
-    "eslint-config-simplifield": "^7.1.0",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.6.1",
+    "eslint-config-simplifield": "^8.1.0",
     "gulp": "^4.0.0",
     "istanbul": "^0.4.2",
     "mocha": "^5.2.0",
