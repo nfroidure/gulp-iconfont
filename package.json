@@ -40,7 +40,7 @@
     "gulp-svgicons2svgfont": "^5.0.1",
     "gulp-ttf2eot": "^1.1.1",
     "gulp-ttf2woff": "^1.1.0",
-    "gulp-ttf2woff2": "^2.0.2",
+    "gulp-ttf2woff2": "^3.0.0",
     "multipipe": "^2.0.3",
     "streamfilter": "^1.0.7"
   },
