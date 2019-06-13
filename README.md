@@ -13,7 +13,7 @@ You can test this library with the
  future, that's why i wanted my SVG source files to sit separated in a folder.
  So, now, just enjoy switching to SVG with almost no effort :). Was a great
  open source journey with you all!
- 
+
 [More info on with using SVG over icon fonts](https://sarasoueidan.com/blog/icon-fonts-to-svg/).
 
 ## Usage
@@ -115,7 +115,7 @@ Add issues to the right repos:
 
 ### iconfont(options)
 
-#### options.formats
+#### options.formats
 Type: `Array`
 Default value: `['ttf', 'eot', 'woff']`
 Possible values: `['svg', 'ttf', 'eot', 'woff', 'woff2']`
@@ -126,14 +126,14 @@ Since SVG fonts are deprecated in some (every ?) browsers, they are disabled
 Also the WOFF2 fonts are disabled since it seems to cause issues on some setup
  (see https://github.com/nfroidure/gulp-iconfont/issues/64).
 
-#### options.autohint
+#### options.autohint
 Type: `Boolean|String`
 Default value: `false`
 
 If [ttfautohint](http://www.freetype.org/ttfautohint/) is installed on your
  system, you may want to auto hint your fonts. Beware that this is an
  experimental and untested feature (beware to use at least the 0.93 version).
- 
+
 If the value is a string, it is taken to be the path to the `ttfautohint` binary.
  Otherwise, `ttfautohint` is searched in $PATH.
 
