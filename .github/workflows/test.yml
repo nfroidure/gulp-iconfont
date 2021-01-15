@@ -2,7 +2,7 @@ on: push
 name: Run tests
 jobs:
   test:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node: [6, 8, 9, 10, 11, 12]
