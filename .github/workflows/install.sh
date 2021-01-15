@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt-get update
-sudo apt-get install -y wget build-essential pkg-config qt4-qmake libqt4-dev
+sudo apt-get install -y qt4-qmake libqt4-dev
 mkdir -p /ttfautohint && cd /ttfautohint
 
 export FT_VERSION=2.6.3
