@@ -1,0 +1,16 @@
+on: push
+name: Run tests
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [6, 8, 9, 10, 11, 12]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: .github/workflows/install.sh
+      - run: npm install
+      - run: npm test
