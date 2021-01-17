@@ -41,7 +41,7 @@
     "gulp-ttf2eot": "^1.1.1",
     "gulp-ttf2woff": "^1.1.0",
     "gulp-ttf2woff2": "^4.0.0",
-    "multipipe": "^2.0.3",
+    "multipipe": "^4.0.0",
     "streamfilter": "^3.0.0"
   },
   "devDependencies": {
