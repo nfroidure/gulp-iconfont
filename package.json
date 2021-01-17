@@ -42,7 +42,7 @@
     "gulp-ttf2woff": "^1.1.0",
     "gulp-ttf2woff2": "^4.0.0",
     "multipipe": "^2.0.3",
-    "streamfilter": "^1.0.7"
+    "streamfilter": "^3.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
