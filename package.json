@@ -50,7 +50,7 @@
     "eslint-config-simplifield": "^8.1.0",
     "gulp": "^4.0.0",
     "istanbul": "^0.4.2",
-    "mocha": "^5.2.0",
+    "mocha": "^8.2.1",
     "mocha-lcov-reporter": "^1.0.0",
     "neatequal": "^1.0.0",
     "streamtest": "^2.0.0"
