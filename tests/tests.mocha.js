@@ -1,5 +1,3 @@
-/* eslint max-nested-callbacks:0, security/detect-non-literal-fs-filename:0, node/no-deprecated-api:0 */
-
 'use strict';
 
 const fs = require('fs');
