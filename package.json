@@ -53,6 +53,6 @@
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.0.0",
     "neatequal": "^1.0.0",
-    "streamtest": "^1.2.4"
+    "streamtest": "^2.0.0"
   }
 }
