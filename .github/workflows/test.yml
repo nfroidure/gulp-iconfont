@@ -12,5 +12,5 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: .github/workflows/install.sh
-      - run: npm install
+      - run: npm ci
       - run: npm test
