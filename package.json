@@ -27,7 +27,8 @@
   "homepage": "https://github.com/nfroidure/gulp-iconfont",
   "author": {
     "name": "Nicolas Froidure",
-    "url": "http://www.insertafter.com/blog.html"
+    "email": "nicolas.froidure@insertafter.com",
+    "url": "http://insertafter.com/en/index.html"
   },
   "repository": {
     "type": "git",

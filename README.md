@@ -174,10 +174,16 @@ More in-depth information:
 
 Feel free to push your code if you agree with publishing under the MIT license.
 
+You may want to use the dockerized version of TTFAutoHint, to do so, run:
+
+```sh
+docker build -t ttfautohint .
+```
+
 [//]: # (::contents:end)
 
 # Authors
-
+- [Nicolas Froidure](http://insertafter.com/en/index.html)
 
 # License
 [MIT](https://github.com/nfroidure/gulp-iconfont/blob/main/LICENSE)
