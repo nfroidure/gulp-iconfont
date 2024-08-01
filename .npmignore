@@ -1,7 +1,0 @@
-*~
-*.swp
-node_modules/
-.git
-.github
-.coveralls.yml
-tests/results
