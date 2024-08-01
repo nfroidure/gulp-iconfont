@@ -49,7 +49,7 @@
     "cover": "npm run jest -- --coverage",
     "cz": "env NODE_ENV=${NODE_ENV:-cli} git cz",
     "format": "npm run prettier",
-    "generate-fixtures": "./tests/generate-fixtures.sh",
+    "generate-fixtures": "./bin/generate-fixtures.sh",
     "jest": "NODE_OPTIONS=--experimental-vm-modules NODE_ENV=test jest",
     "lint": "eslint 'src/**/*.ts'",
     "metapak": "metapak",

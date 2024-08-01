@@ -191,11 +191,19 @@ describe('gulp-iconfont', () => {
       contents.writeUInt8(0, 0x0083);
       expected.writeUInt8(0, 0x0083);
 
+      contents.writeUInt8(0, 0x718);
+      expected.writeUInt8(0, 0x718);
+      contents.writeUInt8(0, 0x719);
+      expected.writeUInt8(0, 0x719);
       contents.writeUInt8(0, 0x71a);
       expected.writeUInt8(0, 0x71a);
       contents.writeUInt8(0, 0x71b);
       expected.writeUInt8(0, 0x71b);
 
+      contents.writeUInt8(0, 0x730);
+      expected.writeUInt8(0, 0x730);
+      contents.writeUInt8(0, 0x731);
+      expected.writeUInt8(0, 0x731);
       contents.writeUInt8(0, 0x732);
       expected.writeUInt8(0, 0x732);
       contents.writeUInt8(0, 0x733);
