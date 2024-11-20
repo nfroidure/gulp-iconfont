@@ -40,7 +40,7 @@ import iconfont from 'gulp-iconfont';
 
 const runTimestamp = Math.round(Date.now() / 1000);
 
-gulp.task('Iconfont', function () {
+gulp.task('Iconfont', async function () {
   return iconfont('assets/icons/*.svg', {
     fontName: 'myfont', // required
     prependUnicode: true, // recommended option
