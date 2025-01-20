@@ -51,6 +51,8 @@ gulp.task('Iconfont', async function () {
       // CSS templating, e.g.
       console.log(glyphs, options);
     })
+    // If you are using gulp v5, add { encoding: false } option in dest function
+    // `.pipe(gulp.dest('www/fonts/', { encoding: false }));`
     .pipe(gulp.dest('www/fonts/'));
 });
 ```
